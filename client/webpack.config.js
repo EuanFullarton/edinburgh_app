@@ -1,5 +1,5 @@
 config = {
-  entry: __dirname + "/../controllers/index.js",
+  entry: __dirname + "/app.js",
   output: {
     filename: "bundle.js",
     path: __dirname + "./build"
