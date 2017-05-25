@@ -2,7 +2,8 @@ var express = require('express');
 var router = express.Router();
 var path = require('path');
 
-// router.use('/seeds', require('./countryRouter.js'))
+router.use('/history', require('./historyRouter.js'));
+router.use('/map', require('./mapRouter.js'));
 
 
 router.get('/', function(req, res){
