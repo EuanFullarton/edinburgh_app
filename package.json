@@ -2,9 +2,10 @@
   "name": "group_project",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js",
     "webpack": "cd client && webpack -w"
   },
   "keywords": [],
@@ -15,6 +16,7 @@
     "mongo": "^0.1.0"
   },
   "devDependencies": {
+    "body-parser": "^1.17.2",
     "webpack": "^2.6.1"
   }
 }
