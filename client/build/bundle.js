@@ -147,6 +147,7 @@ window.addEventListener('load', app);
 /***/ (function(module, exports) {
 
 var HistoryItem = function(options) {
+  this.year = options.year;
   this.fact = options.fact;
 }
 
@@ -219,9 +220,13 @@ HistoryView.prototype = {
     historyContainer.innerHTML = "";
     for(var history of histories){
       var d = document.createElement('div');
-      var p = document.createElement('p');
-      p.innerText = history.fact;
-      d.appendChild(p);
+      var year = document.createElement('p');
+      var text = document.createElement('p');
+      console.log(history.year);
+      year.innerText = history.year;
+      text.innerText = history.fact;
+      d.appendChild(year);
+      d.appendChild(text);
       historyContainer.appendChild(d);
     }
   }
