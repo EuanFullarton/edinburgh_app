@@ -68,6 +68,32 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var MapView = __webpack_require__(6);
+var HistoryView = __webpack_require__(5);
+
+var IndexView = function() {
+  this.mapView = new MapView();
+  this.historyView = new HistoryView();
+  var mapButton = document.getElementById('map-button');
+  var historyButton = document.getElementById('history-button');
+  mapButton.addEventListener('click', this.mapView.getMap.bind(this.mapView));
+  historyButton.addEventListener('click', this.historyView.getHistory.bind(this.historyView));
+  this.app();
+};
+
+IndexView.prototype = {
+  app:function(){
+    console.log("Running app");
+  }
+}
+
+module.exports = IndexView;
+
+
+/***/ }),
+/* 1 */
 /***/ (function(module, exports) {
 
 var Helper = function() {
@@ -93,36 +119,10 @@ module.exports = Helper;
 
 
 /***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var MapView = __webpack_require__(8);
-var HistoryView = __webpack_require__(7);
-
-var IndexView = function() {
-  this.mapView = new MapView();
-  this.historyView = new HistoryView();
-  var mapButton = document.getElementById('map-button');
-  var historyButton = document.getElementById('history-button');
-  mapButton.addEventListener('click', this.mapView.getMap.bind(this.mapView));
-  historyButton.addEventListener('click', this.historyView.getHistory.bind(this.historyView));
-  this.app();
-};
-
-IndexView.prototype = {
-  app:function(){
-    console.log("Running app");
-  }
-}
-
-module.exports = IndexView;
-
-
-/***/ }),
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var IndexView = __webpack_require__(1);
+var IndexView = __webpack_require__(0);
 
 var app = function() {
   new IndexView();
@@ -151,7 +151,7 @@ module.exports = HistoryItem;
 /***/ (function(module, exports, __webpack_require__) {
 
 var HistoryItem = __webpack_require__(3);
-var RequestHelper = __webpack_require__(0);
+var RequestHelper = __webpack_require__(1);
 
 
 var HistoryItems = function() {
@@ -179,6 +179,83 @@ module.exports = HistoryItems;
 
 /***/ }),
 /* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var HistoryItems = __webpack_require__(4)
+
+var HistoryView = function() {
+
+};
+
+HistoryView.prototype = {
+  getHistory: function(){
+    console.log("Clicked history");
+    var historyItems = new HistoryItems();
+    historyItems.all(function(items){
+      this.renderHistory(items);
+    }.bind(this));
+  },
+
+  renderHistory: function(histories){
+    var mapContainer = document.getElementById("map-container");
+    mapContainer.style.display = "none";
+    var outerhistoryContainer = document.getElementById("outer-history-container");
+    var historyContainer = document.getElementById("history-container");
+    outerhistoryContainer.style.display = "block";
+    historyContainer.style.display = "block";
+    historyContainer.innerHTML = "";
+    for(var history of histories){
+      var d = document.createElement('div');
+      var p = document.createElement('p');
+      p.innerText = history.fact;
+      d.appendChild(p);
+      historyContainer.appendChild(d);
+    }
+  }
+}
+
+module.exports = HistoryView;
+
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var MapItems = __webpack_require__(8)
+//Comment insertion
+var MapView = function() {
+
+};
+
+MapView.prototype = {
+  getMap:function(){
+    console.log("Clicked map");
+    var mapItems = new MapItems();
+    mapItems.all(function(places){
+      console.log(this);
+      this.renderMap(places);
+    }.bind(this));
+  },
+
+  renderMap: function(places){
+    var outerHistoryContainer = document.getElementById("outer-history-container");
+    outerHistoryContainer.style.display = "none";
+    var mapContainer = document.getElementById("map-container");
+    mapContainer.innerHTML = "";
+    mapContainer.style.display = "block";
+    for(var place of places){
+      var p = document.createElement('p');
+      p.innerText = place.name;
+      mapContainer.appendChild(p);
+    }
+  }
+}
+
+module.exports = MapView;
+
+
+/***/ }),
+/* 7 */
 /***/ (function(module, exports) {
 
 var MapItem = function(options) {
@@ -193,11 +270,11 @@ module.exports = MapItem;
 
 
 /***/ }),
-/* 6 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var MapItem = __webpack_require__(5);
-var RequestHelper = __webpack_require__(0);
+var MapItem = __webpack_require__(7);
+var RequestHelper = __webpack_require__(1);
 
 
 var MapItems = function() {
@@ -221,79 +298,6 @@ MapItems.prototype = {
 };
 
 module.exports = MapItems;
-
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var HistoryItems = __webpack_require__(4)
-
-var HistoryView = function() {
-
-};
-
-HistoryView.prototype = {
-  getHistory: function(){
-    console.log("Clicked history");
-    var historyItems = new HistoryItems();
-    historyItems.all(function(items){
-      this.renderHistory(items);
-    }.bind(this));
-  },
-
-  renderHistory: function(histories){
-    var mapContainer = document.getElementById("map-container");
-    mapContainer.style.display = "none";
-    var historyContainer = document.getElementById("history-container");
-    historyContainer.style.display = "block";
-    historyContainer.innerHTML = "";
-    for(var history of histories){
-      var p = document.createElement('p');
-      p.innerText = history.fact;
-      historyContainer.appendChild(p);
-    }
-  }
-}
-
-module.exports = HistoryView;
-
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var MapItems = __webpack_require__(6)
-//Comment insertion 
-var MapView = function() {
-
-};
-
-MapView.prototype = {
-  getMap:function(){
-    console.log("Clicked map");
-    var mapItems = new MapItems();
-    mapItems.all(function(places){
-      console.log(this);
-      this.renderMap(places);
-    }.bind(this));
-  },
-
-  renderMap: function(places){
-    var historyContainer = document.getElementById("history-container");
-    historyContainer.style.display = "none";
-    var mapContainer = document.getElementById("map-container");
-    mapContainer.innerHTML = "";
-    mapContainer.style.display = "block";
-    for(var place of places){
-      var p = document.createElement('p');
-      p.innerText = place.name;
-      mapContainer.appendChild(p);
-    }
-  }
-}
-
-module.exports = MapView;
 
 
 /***/ })
