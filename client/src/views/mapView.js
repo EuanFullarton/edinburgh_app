@@ -13,7 +13,7 @@ MapView.prototype = {
   },
 
   render: function(places){
-    var container = document.getElementById("container");
+    var container = document.getElementById("map-container");
     for(var place of places){
       var p = document.createElement('p');
       p.innerText = place.name;

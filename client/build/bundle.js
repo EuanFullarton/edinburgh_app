@@ -85,7 +85,7 @@ MapView.prototype = {
   },
 
   render: function(places){
-    var container = document.getElementById("container");
+    var container = document.getElementById("map-container");
     for(var place of places){
       var p = document.createElement('p');
       p.innerText = place.name;
@@ -165,7 +165,7 @@ var MapItems = function() {
 
 MapItems.prototype = {
   all: function(callback){
-    this.requestHelper.makeGetRequest('http://localhost:3000/map', function(results){
+    this.requestHelper.makeGetRequest('http://localhost:3000/api/map', function(results){
       var items = this.populateItems(results);
       callback(items);
     }.bind(this));

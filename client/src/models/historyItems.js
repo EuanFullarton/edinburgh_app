@@ -1,14 +1,14 @@
-var MapItem = require('./mapItem.js');
+var HistoryItem = require('./historyItem.js');
 var RequestHelper = require('../../helper/requestHelper.js');
 
 
-var MapItems = function() {
+var HistoryItems = function() {
   this.requestHelper = new RequestHelper();
 }
 
-MapItems.prototype = {
+HistoryItems.prototype = {
   all: function(callback){
-    this.requestHelper.makeGetRequest('http://localhost:3000/api/map', function(results){
+    this.requestHelper.makeGetRequest('http://localhost:3000/api/history', function(results){
       var items = this.populateItems(results);
       callback(items);
     }.bind(this));
@@ -16,10 +16,10 @@ MapItems.prototype = {
 
   populateItems: function(results){
     var items = results.map(function(resultObject){
-      return new MapItem(resultObject);
+      return new HistoryItem(resultObject);
     })
     return items;
   }
 };
 
-module.exports = MapItems;
+module.exports = HistoryItems;
