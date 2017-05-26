@@ -1,9 +1,5 @@
-var MapItems = require('../models/mapItems')
-<<<<<<< HEAD
+var MapItems = require('../models/mapItems');
 
-=======
-//Comment insertion
->>>>>>> feature/history
 var MapView = function() {
 
 };
@@ -21,6 +17,10 @@ MapView.prototype = {
   renderMap: function(places){
     var outerHistoryContainer = document.getElementById("outer-history-container");
     outerHistoryContainer.style.display = "none";
+    var historyContainer = document.getElementById("history-container");
+    historyContainer.style.display = "none";
+    var menuButton = document.getElementById("menu-button");
+    menuButton.style.display = "block";
     var mapContainer = document.getElementById("map-container");
     mapContainer.innerHTML = "";
     mapContainer.style.display = "block";
