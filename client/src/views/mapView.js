@@ -1,5 +1,5 @@
 var MapItems = require('../models/mapItems')
-// In develop
+
 var MapView = function() {
 
 };
