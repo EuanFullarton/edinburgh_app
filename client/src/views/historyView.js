@@ -16,6 +16,8 @@ HistoryView.prototype = {
   renderHistory: function(histories){
     var mapContainer = document.getElementById("map-container");
     mapContainer.style.display = "none";
+    var menuButton = document.getElementById("menu-button");
+    menuButton.style.display = "block";
     var historyContainer = document.getElementById("history-container");
     historyContainer.style.display = "block";
     historyContainer.innerHTML = "";
