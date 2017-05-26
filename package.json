@@ -13,10 +13,10 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.15.3",
-    "mongo": "^0.1.0"
+    "mongo": "^0.1.0",
+    "body-parser": "^1.17.2"
   },
   "devDependencies": {
-    "body-parser": "^1.17.2",
     "webpack": "^2.6.1"
   }
 }
