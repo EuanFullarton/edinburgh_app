@@ -1,29 +1,30 @@
-var HistoryItems = require ('../models/historyItems');
+var HistoryItems = require('../models/historyItems')
 
 var HistoryView = function() {
-  this.get();
+
 };
 
 HistoryView.prototype = {
-
-  get: function(){
+  getHistory: function(){
+    console.log("Clicked history");
     var historyItems = new HistoryItems();
     historyItems.all(function(items){
-      this.render(items);
-      console.log(items);
+      this.renderHistory(items);
     }.bind(this));
   },
 
-  render: function(histories){
-    var container = document.getElementById("history-container");
+  renderHistory: function(histories){
+    var mapContainer = document.getElementById("map-container");
+    mapContainer.style.display = "none";
+    var historyContainer = document.getElementById("history-container");
+    historyContainer.style.display = "block";
+    historyContainer.innerHTML = "";
     for(var history of histories){
       var p = document.createElement('p');
       p.innerText = history.fact;
-      console.log(history.fact);
+      historyContainer.appendChild(p);
     }
-    container.appendChild(p);
   }
-
 }
 
 module.exports = HistoryView;

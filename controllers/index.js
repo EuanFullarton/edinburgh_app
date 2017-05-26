@@ -9,13 +9,5 @@ router.get('/', function(req, res){
   res.sendFile(path.join(__dirname + '/../client/build/index.html'))
 })
 
-router.get('/map', function(req, res){
-  res.sendFile(path.join(__dirname + '/../client/build/mapIndex.html'))
-})
-
-router.get('/history', function(req, res){
-  res.sendFile(path.join(__dirname + '/../client/build/historyIndex.html'))
-})
-
 
 module.exports = router;
