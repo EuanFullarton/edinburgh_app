@@ -1,5 +1,5 @@
 var MapItems = require('../models/mapItems')
-
+//Comment insertion 
 var MapView = function() {
 
 };
