@@ -68,6 +68,32 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var MapView = __webpack_require__(6);
+var HistoryView = __webpack_require__(5);
+
+var IndexView = function() {
+  this.mapView = new MapView();
+  this.historyView = new HistoryView();
+  var mapButton = document.getElementById('map-button');
+  var historyButton = document.getElementById('history-button');
+  mapButton.addEventListener('click', this.mapView.getMap.bind(this.mapView));
+  historyButton.addEventListener('click', this.historyView.getHistory.bind(this.historyView));
+  this.app();
+};
+
+IndexView.prototype = {
+  app:function(){
+    console.log("Running app");
+  }
+}
+
+module.exports = IndexView;
+
+
+/***/ }),
+/* 1 */
 /***/ (function(module, exports) {
 
 var Helper = function() {
@@ -93,36 +119,10 @@ module.exports = Helper;
 
 
 /***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var MapView = __webpack_require__(8);
-var HistoryView = __webpack_require__(7);
-
-var IndexView = function() {
-  this.mapView = new MapView();
-  this.historyView = new HistoryView();
-  var mapButton = document.getElementById('map-button');
-  var historyButton = document.getElementById('history-button');
-  mapButton.addEventListener('click', this.mapView.getMap.bind(this.mapView));
-  historyButton.addEventListener('click', this.historyView.getHistory.bind(this.historyView));
-  this.app();
-};
-
-IndexView.prototype = {
-  app:function(){
-    console.log("Running app");
-  }
-}
-
-module.exports = IndexView;
-
-
-/***/ }),
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var IndexView = __webpack_require__(1);
+var IndexView = __webpack_require__(0);
 
 var app = function() {
   new IndexView();
@@ -151,7 +151,7 @@ module.exports = HistoryItem;
 /***/ (function(module, exports, __webpack_require__) {
 
 var HistoryItem = __webpack_require__(3);
-var RequestHelper = __webpack_require__(0);
+var RequestHelper = __webpack_require__(1);
 
 
 var HistoryItems = function() {
@@ -179,52 +179,6 @@ module.exports = HistoryItems;
 
 /***/ }),
 /* 5 */
-/***/ (function(module, exports) {
-
-var MapItem = function(options) {
-  this.name = options.name;
-}
-
-MapItem.prototype = {
-
-}
-
-module.exports = MapItem;
-
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var MapItem = __webpack_require__(5);
-var RequestHelper = __webpack_require__(0);
-
-
-var MapItems = function() {
-  this.requestHelper = new RequestHelper();
-}
-
-MapItems.prototype = {
-  all: function(callback){
-    this.requestHelper.makeGetRequest('http://localhost:3000/api/map', function(results){
-      var items = this.populateItems(results);
-      callback(items);
-    }.bind(this));
-  },
-
-  populateItems: function(results){
-    var items = results.map(function(resultObject){
-      return new MapItem(resultObject);
-    })
-    return items;
-  }
-};
-
-module.exports = MapItems;
-
-
-/***/ }),
-/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var HistoryItems = __webpack_require__(4)
@@ -260,10 +214,10 @@ module.exports = HistoryView;
 
 
 /***/ }),
-/* 8 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var MapItems = __webpack_require__(6)
+var MapItems = __webpack_require__(8)
 
 var MapView = function() {
 
@@ -294,6 +248,52 @@ MapView.prototype = {
 }
 
 module.exports = MapView;
+
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports) {
+
+var MapItem = function(options) {
+  this.name = options.name;
+}
+
+MapItem.prototype = {
+
+}
+
+module.exports = MapItem;
+
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var MapItem = __webpack_require__(7);
+var RequestHelper = __webpack_require__(1);
+
+
+var MapItems = function() {
+  this.requestHelper = new RequestHelper();
+}
+
+MapItems.prototype = {
+  all: function(callback){
+    this.requestHelper.makeGetRequest('http://localhost:3000/api/map', function(results){
+      var items = this.populateItems(results);
+      callback(items);
+    }.bind(this));
+  },
+
+  populateItems: function(results){
+    var items = results.map(function(resultObject){
+      return new MapItem(resultObject);
+    })
+    return items;
+  }
+};
+
+module.exports = MapItems;
 
 
 /***/ })
