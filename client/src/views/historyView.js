@@ -16,13 +16,17 @@ HistoryView.prototype = {
   renderHistory: function(histories){
     var mapContainer = document.getElementById("map-container");
     mapContainer.style.display = "none";
+    var outerhistoryContainer = document.getElementById("outer-history-container");
     var historyContainer = document.getElementById("history-container");
+    outerhistoryContainer.style.display = "block";
     historyContainer.style.display = "block";
     historyContainer.innerHTML = "";
     for(var history of histories){
+      var d = document.createElement('div');
       var p = document.createElement('p');
       p.innerText = history.fact;
-      historyContainer.appendChild(p);
+      d.appendChild(p);
+      historyContainer.appendChild(d);
     }
   }
 }

@@ -199,13 +199,17 @@ HistoryView.prototype = {
   renderHistory: function(histories){
     var mapContainer = document.getElementById("map-container");
     mapContainer.style.display = "none";
+    var outerhistoryContainer = document.getElementById("outer-history-container");
     var historyContainer = document.getElementById("history-container");
+    outerhistoryContainer.style.display = "block";
     historyContainer.style.display = "block";
     historyContainer.innerHTML = "";
     for(var history of histories){
+      var d = document.createElement('div');
       var p = document.createElement('p');
       p.innerText = history.fact;
-      historyContainer.appendChild(p);
+      d.appendChild(p);
+      historyContainer.appendChild(d);
     }
   }
 }
@@ -215,86 +219,9 @@ module.exports = HistoryView;
 
 /***/ }),
 /* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var MapItems = __webpack_require__(8)
-
-var MapView = function() {
-
-};
-
-MapView.prototype = {
-  getMap:function(){
-    console.log("Clicked map");
-    var mapItems = new MapItems();
-    mapItems.all(function(places){
-      console.log(this);
-      this.renderMap(places);
-    }.bind(this));
-  },
-
-  renderMap: function(places){
-    var historyContainer = document.getElementById("history-container");
-    historyContainer.style.display = "none";
-    var mapContainer = document.getElementById("map-container");
-    mapContainer.innerHTML = "";
-    mapContainer.style.display = "block";
-    for(var place of places){
-      var p = document.createElement('p');
-      p.innerText = place.name;
-      mapContainer.appendChild(p);
-    }
-  }
-}
-
-module.exports = MapView;
-
-
-/***/ }),
-/* 7 */
 /***/ (function(module, exports) {
 
-var MapItem = function(options) {
-  this.name = options.name;
-}
-
-MapItem.prototype = {
-
-}
-
-module.exports = MapItem;
-
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var MapItem = __webpack_require__(7);
-var RequestHelper = __webpack_require__(1);
-
-
-var MapItems = function() {
-  this.requestHelper = new RequestHelper();
-}
-
-MapItems.prototype = {
-  all: function(callback){
-    this.requestHelper.makeGetRequest('http://localhost:3000/api/map', function(results){
-      var items = this.populateItems(results);
-      callback(items);
-    }.bind(this));
-  },
-
-  populateItems: function(results){
-    var items = results.map(function(resultObject){
-      return new MapItem(resultObject);
-    })
-    return items;
-  }
-};
-
-module.exports = MapItems;
-
+throw new Error("Module parse failed: /Users/user/Documents/cx3-11/week_13/edinburgh_app/client/src/views/mapView.js Unexpected token (2:2)\nYou may need an appropriate loader to handle this file type.\n| var MapItems = require('../models/mapItems')\n| <<<<<<< HEAD\n| \n| =======");
 
 /***/ })
 /******/ ]);
