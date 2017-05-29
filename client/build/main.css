@@ -1,3 +1,7 @@
+body{
+  width:100%;
+}
+
 .history-container {
   display: none;
 }
@@ -32,6 +36,47 @@
   display: none;
 }
 
+#main-header{
+  margin:auto;
+  display:block;
+  text-align: center;
+}
+
 #menu-button{
   display:none;
+}
+
+#map-button{
+  background-color: red;
+  padding:5%;
+  font-size: 2em;
+  color: white;
+  margin-left:35%;
+  margin-top:15%;
+  display:inline-block;
+  width:15%;
+  height:15%;
+  border-radius: 20px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+#map-button:hover{
+  background-color: #ff3333;
+  color:white;
+}
+
+#history-button{
+  background-color: yellow;
+  padding:5%;
+  font-size: 2em;
+  margin:auto;
+  display:inline-block;
+  width:15%;
+  height:15%;
+  border-radius: 20px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+#history-button:hover{
+  background-color:  #ffff66;
 }
