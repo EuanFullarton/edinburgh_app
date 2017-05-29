@@ -23,6 +23,8 @@ body{
   height: 500px;
   background-image: url("./images/parchment-background.jpg");
   background-size: 100%;
+  margin-left: 2%;
+  margin-right: 2%;
 }
 
 .history-container div {
