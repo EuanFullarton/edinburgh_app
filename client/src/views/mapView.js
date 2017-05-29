@@ -28,8 +28,27 @@ MapView.prototype = {
     outerHistoryContainer.style.display = "none";
     var historyContainer = document.getElementById("history-container");
     historyContainer.style.display = "none";
+
+    var navHistoryButton = document.getElementById("nav-history-button");
+    navHistoryButton.style.display = "inline-block";
+    var mainMapButton = document.getElementById("main-map-button");
+    mainMapButton.style.display = "none";
+    var navMapButton = document.getElementById("nav-map-button");
+    navMapButton.style.display = "none";
     var menuButton = document.getElementById("menu-button");
     menuButton.style.display = "block";
+
+    var navButtons = document.getElementsByClassName("nav-button");
+    var mainButtons = document.getElementsByClassName("main-button")
+    console.log(navButtons);
+    for (button of navButtons){
+      button.style.margin = "0";
+      button.style.padding = "1%";
+    };
+
+    for (button of mainButtons){
+      button.style.display = "none";
+    }
 
     var mainHeader = document.getElementById("main-header");
     mainHeader.style.display = "none";
@@ -39,23 +58,13 @@ MapView.prototype = {
     mapHeader.style.display = "block";
 
 
-    var mainMapButton = document.getElementById("main-map-button");
-    mainMapButton.style.display = "none";
-    var navMapButton = document.getElementById("nav-map-button");
-    navMapButton.style.display = "none";
-    var mainHistoryButton = document.getElementById("main-history-button");
-    mainHistoryButton.style.display = "none";
-    var navHistoryButton = document.getElementById("nav-history-button");
-    navHistoryButton.style.display = "inline-block";
-
-
     var mapContainer = document.getElementById("map-container");
     mapContainer.innerHTML = "";
     mapContainer.style.display = "block";
 
     var googleMap = new google.maps.Map(mapContainer, {
-    center: {lat: 55.953251, lng: -3.188267},
-    zoom: 13
+      center: {lat: 55.953251, lng: -3.188267},
+      zoom: 13
     });
 
     for(var place of places){
@@ -68,6 +77,7 @@ MapView.prototype = {
         info: place.info,
         latlng: place.latlng,
         position: { lat: place.latlng.lat, lng: place.latlng.lng },
+        animation: google.maps.Animation.DROP,
         map: googleMap
       });
 

@@ -40,6 +40,18 @@ HistoryView.prototype = {
     var menuButton = document.getElementById("menu-button");
     menuButton.style.display = "block";
 
+    var navButtons = document.getElementsByClassName("nav-button");
+    var mainButtons = document.getElementsByClassName("main-button")
+    console.log(navButtons);
+    for (button of navButtons){
+      button.style.margin = "0";
+      button.style.padding = "1%";
+    };
+
+    for (button of mainButtons){
+      button.style.display = "none";
+    }
+
     var historyContainer = document.getElementById("history-container");
     outerhistoryContainer.style.display = "block";
     historyContainer.style.display = "block";
