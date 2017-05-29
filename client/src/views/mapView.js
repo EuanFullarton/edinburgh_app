@@ -21,6 +21,21 @@ MapView.prototype = {
     historyContainer.style.display = "none";
     var menuButton = document.getElementById("menu-button");
     menuButton.style.display = "block";
+    
+    var mainHeader = document.getElementById("main-header");
+    mainHeader.style.display = "none";
+    var historyHeader = document.getElementById("history-title");
+    historyHeader.style.display = "none";
+    var mapHeader = document.getElementById("map-title");
+    mapHeader.style.display = "block";
+    
+
+    var mapButton = document.getElementById("map-button");
+    mapButton.style.display = "none";
+    var historyButton = document.getElementById("history-button");
+    historyButton.style.display = "inline-block";
+
+
     var mapContainer = document.getElementById("map-container");
     mapContainer.innerHTML = "";
     mapContainer.style.display = "block";
