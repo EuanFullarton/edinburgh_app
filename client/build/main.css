@@ -19,12 +19,11 @@ body{
 }
 
 .history-container {
-  width: 9500px;
+  width: 9100px;
   height: 500px;
   background-image: url("./images/parchment-background.jpg");
   background-size: 100%;
-  margin-left: 2%;
-  margin-right: 2%;
+  margin: 2%;
 }
 
 .history-container div {
