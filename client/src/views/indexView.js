@@ -48,6 +48,24 @@ IndexView.prototype = {
    navHistoryButton.style.display = "none";
    var menuButton = document.getElementById('menu-button');
    menuButton.style.display = "none";
+
+
+
+   // .button{
+   //   background-color: #ff3333;
+   //   color:white;
+   //   display: inline-block;
+   //   margin-left:25%;
+   //   margin-right:-10%;
+   //   margin-top:20%;
+   //   border-radius: 20px;
+   //   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+   //   width:15%;
+   //   height:15%;
+   //   font-size: 2em;
+
+
+
  }
 }
 
