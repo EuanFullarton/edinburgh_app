@@ -35,7 +35,6 @@ MapView.prototype = {
     var historyButton = document.getElementById("history-button");
     historyButton.style.display = "inline-block";
 
-
     var mapContainer = document.getElementById("map-container");
     mapContainer.innerHTML = "";
     mapContainer.style.display = "block";

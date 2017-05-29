@@ -1,5 +1,8 @@
 body{
   width:100%;
+  background-image: url("/images/EdBackground.jpg");
+  background-repeat: no-repeat;
+  margin:auto;
 }
 
 .history-container {
@@ -30,16 +33,28 @@ body{
 
 .history-title {
   display: none;
+  color: white;
+  -webkit-text-stroke: 0.75px black;
 }
 
 .map-title {
   display: none;
+  color: white;
+  -webkit-text-stroke: 0.75px black;
+}
+
+#map-container{
+  background-color: rgba(255, 255, 255, 0.75);
 }
 
 #main-header{
   margin:auto;
   display:block;
   text-align: center;
+  color: white;
+  font-size: 3em;
+  -webkit-text-stroke: 0.75px black;
+
 }
 
 #menu-button{
