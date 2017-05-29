@@ -1,6 +1,7 @@
 body{
   width:100%;
   background-image: url("/images/EdBackground.jpg");
+  background-size: 100%;
   background-repeat: no-repeat;
   margin:auto;
 }
