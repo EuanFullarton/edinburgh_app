@@ -60,12 +60,28 @@ MapView.prototype = {
       var p = document.createElement('p');
       p.innerText = place.name;
       mapContainer.appendChild(p);
-      console.log(place)
-      
+
       var marker = new google.maps.Marker({
+        name: place.name,
+        info: place.info,
         position: { lat: place.latlng.lat, lng: place.latlng.lng },
         map: googleMap
-      })          
+      });
+
+      var infowindow = new google.maps.InfoWindow({
+        content: place.name + ": " + place.info
+      });
+
+      // marker.addListener('click', function() {
+      //     infowindow.open(googleMap, this);
+      //     console.log(this);
+      //   });       
+
+      google.maps.event.addListener(marker, 'click', function () {
+        infowindow.setContent(this.name + ": " + this.info);
+        infowindow.open(googleMap, this);
+      });
+
     }
   },
   renderFavs: function(favs){
