@@ -69,7 +69,8 @@ MapView.prototype = {
       });
 
       var infowindow = new google.maps.InfoWindow({
-        content: place.name + ": " + place.info
+        content: place.name + ": " + place.info,
+        maxWidth: 200
       });
 
       // marker.addListener('click', function() {
@@ -78,7 +79,7 @@ MapView.prototype = {
       //   });       
 
       google.maps.event.addListener(marker, 'click', function () {
-        infowindow.setContent(this.name + ": " + this.info);
+        infowindow.setContent(this.name + ": " + this.info + "<button onclick= 'click' > Add to favourites</button>");
         infowindow.open(googleMap, this);
       });
 
