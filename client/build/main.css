@@ -1,6 +1,7 @@
 body{
   width:100%;
   background-image: url("/images/EdBackground.jpg");
+  background-size: 100%;
   background-repeat: no-repeat;
   margin:auto;
 }
@@ -18,10 +19,12 @@ body{
 }
 
 .history-container {
-  width: 9500px;
-  height: 500px;
+  width: 635%;
+  height: 95%;
   background-image: url("./images/parchment-background.jpg");
   background-size: 100%;
+  padding:3%;
+  margin: 2%;
 }
 
 .history-container div {
@@ -44,8 +47,10 @@ body{
 }
 
 #map-container{
-  height: 500px;
-  width:500px;
+  height: 30em;
+  width:75%;
+  margin:auto;
+  display:block;
 }
 
 .main-header{
@@ -89,3 +94,4 @@ body{
 #nav-history-button{
   display:none;
 }
+
