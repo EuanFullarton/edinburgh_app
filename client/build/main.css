@@ -23,6 +23,7 @@ body{
   height: 500px;
   background-image: url("./images/parchment-background.jpg");
   background-size: 100%;
+  padding:3%;
   margin: 2%;
 }
 
