@@ -45,8 +45,10 @@ body{
 }
 
 #map-container{
-  height: 500px;
-  width:500px;
+  height: 30em;
+  width:75%;
+  margin:auto;
+  display:block;
 }
 
 #main-header{
@@ -105,3 +107,4 @@ body{
 #nav-history-button{
   display:none;
 }
+
