@@ -125,6 +125,10 @@ IndexView.prototype = {
      menuButton.style.display = "none";
      var mainHeader = document.getElementById("main-header");
      mainHeader.style.display = "block";
+     var mapButton = document.getElementById("map-button");
+     mapButton.style.display = "inline-block";
+     var historyButton = document.getElementById("history-button");
+     historyButton.style.display = "inline-block";
    }
 }
 
@@ -262,9 +266,12 @@ HistoryView.prototype = {
     var outerhistoryContainer = document.getElementById("outer-history-container");
     var menuButton = document.getElementById("menu-button");
     menuButton.style.display = "block";
-   
     var mainHeader = document.getElementById("main-header");
     mainHeader.style.display = "none";
+    var historyButton = document.getElementById("history-button");
+    historyButton.style.display = "none";
+    var mapButton = document.getElementById("map-button");
+    mapButton.style.display = "inline-block";
 
     var historyContainer = document.getElementById("history-container");
     outerhistoryContainer.style.display = "block";
@@ -314,9 +321,13 @@ MapView.prototype = {
     historyContainer.style.display = "none";
     var menuButton = document.getElementById("menu-button");
     menuButton.style.display = "block";
-
     var mainHeader = document.getElementById("main-header");
     mainHeader.style.display = "none";
+    var mapButton = document.getElementById("map-button");
+    mapButton.style.display = "none";
+    var historyButton = document.getElementById("history-button");
+    historyButton.style.display = "inline-block";
+
 
     var mapContainer = document.getElementById("map-container");
     mapContainer.innerHTML = "";

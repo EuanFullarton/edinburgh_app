@@ -27,6 +27,10 @@ IndexView.prototype = {
      menuButton.style.display = "none";
      var mainHeader = document.getElementById("main-header");
      mainHeader.style.display = "block";
+     var mapButton = document.getElementById("map-button");
+     mapButton.style.display = "inline-block";
+     var historyButton = document.getElementById("history-button");
+     historyButton.style.display = "inline-block";
    }
 }
 
