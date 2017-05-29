@@ -109,9 +109,18 @@ MapView.prototype = {
     favsContainer.innerHTML = "";
     favsContainer.style.display = "block";
     for(var fav of favs){
-      var p = document.createElement('p');
-      p.innerText = fav.name;
-      favsContainer.appendChild(p);
+      var favBox = document.createElement('div');
+      var p1 = document.createElement('p');
+      var p2 = document.createElement('p');
+      var deleteButton = document.createElement('BUTTON');
+      p1.innerText = fav.name;
+      p2.innerText = fav.info;
+      deleteButton.name = "Delete";
+      deleteButton.value = "Delete";
+      favBox.appendChild(p1);
+      favBox.appendChild(p2);
+      favBox.appendChild(deleteButton);
+      favsContainer.appendChild(favBox);
 
     };
   },
