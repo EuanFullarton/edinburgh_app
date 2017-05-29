@@ -15,7 +15,8 @@ MapView.prototype = {
   },
 
   renderMap: function(places){
-    
+    var mapContainer = document.getElementById("map-container");
+    mapContainer.style.display = "block";
     var outerHistoryContainer = document.getElementById("outer-history-container");
     outerHistoryContainer.style.display = "none";
     var historyContainer = document.getElementById("history-container");
