@@ -2,6 +2,10 @@ use Edinburgh;
 
 db.dropDatabase();
 
+db.favs.insert([
+  {name:"Edinburgh Castle", info:"Edinburgh Castle is a historic fortress which dominates the skyline of the city of Edinburgh, Scotland, from its position on the Castle Rock", latlng: {lat: 55.9485947, lng:-3.1999135}}
+])
+
 db.places.insert([
   {name:"Edinburgh Castle", info:"Edinburgh Castle is a historic fortress which dominates the skyline of the city of Edinburgh, Scotland, from its position on the Castle Rock", latlng: {lat: 55.9485947, lng:-3.1999135}},
   {name:"Arthur's Seat", info:"Arthur's Seat is the main peak of the group of hills in Edinburgh, Scotland which form most of Holyrood Park", latlng: {lat: 55.9440833, lng:-3.164022}},
