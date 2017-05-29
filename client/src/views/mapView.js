@@ -8,7 +8,6 @@ var MapView = function() {
 
 MapView.prototype = {
   getMap:function(){
-    console.log("Clicked map");
     var mapItems = new MapItems();
     var favItems = new FavItems();
     mapItems.all(function(places){
@@ -39,8 +38,7 @@ MapView.prototype = {
     menuButton.style.display = "block";
 
     var navButtons = document.getElementsByClassName("nav-button");
-    var mainButtons = document.getElementsByClassName("main-button")
-    console.log(navButtons);
+    var mainButtons = document.getElementsByClassName("main-button");
     for (button of navButtons){
       button.style.margin = "0";
       button.style.padding = "1%";
@@ -120,8 +118,8 @@ MapView.prototype = {
 
   addToFavourites: function(place){
     var favItems = new FavItems();
-    favItems.all(function(places){
-      console.log(place), place;
+    favItems.post(function(place){
+      console.log("callback"), place;
     });
   }
 }

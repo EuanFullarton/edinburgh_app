@@ -12,4 +12,10 @@ favRouter.get('/', function(req, res){
   })
 })
 
+favRouter.post('/', function(req, res){
+  query.add(function(data){
+    res.json(data);
+  })
+})
+
 module.exports = favRouter;
