@@ -15,12 +15,9 @@ MapView.prototype = {
   },
 
   renderMap: function(places){
-<<<<<<< HEAD
     var mapContainer = document.getElementById("map-container");
     mapContainer.style.display = "block";
-=======
     
->>>>>>> feature/main_page
     var outerHistoryContainer = document.getElementById("outer-history-container");
     outerHistoryContainer.style.display = "none";
     var historyContainer = document.getElementById("history-container");
@@ -34,12 +31,7 @@ MapView.prototype = {
     historyHeader.style.display = "none";
     var mapHeader = document.getElementById("map-title");
     mapHeader.style.display = "block";
-    
 
-    var mapButton = document.getElementById("map-button");
-    mapButton.style.display = "none";
-    var historyButton = document.getElementById("history-button");
-    historyButton.style.display = "inline-block";
 
     var mainMapButton = document.getElementById("main-map-button");
     mainMapButton.style.display = "none";
