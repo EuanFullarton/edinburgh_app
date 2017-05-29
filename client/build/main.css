@@ -48,12 +48,13 @@ body{
   width:500px;
 }
 
-#main-header{
+.main-header{
   margin:auto;
   display:block;
   text-align: center;
   color: white;
   font-size: 3em;
+  font-weight: bolder;
   -webkit-text-stroke: 0.75px black;
 
 }
@@ -62,39 +63,23 @@ body{
   display:none;
 }
 
-#main-map-button{
-  background-color: red;
-  padding:5%;
-  font-size: 2em;
-  color: white;
-  margin-left:35%;
-  margin-top:15%;
-  display:inline-block;
-  width:15%;
-  height:15%;
-  border-radius: 20px;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+.main-container{
+  margin-left: 45%;
+  margin-top: 45%;
+  text-align: center;
+  display: inline-block;
 }
 
-#main-map-button:hover{
+.button{
   background-color: #ff3333;
   color:white;
-}
-
-#main-history-button{
-  background-color: yellow;
-  padding:5%;
-  font-size: 2em;
-  margin:auto;
-  display:inline-block;
-  width:15%;
-  height:15%;
+  display: inline-block;
+  margin: auto;
   border-radius: 20px;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-}
-
-#main-history-button:hover{
-  background-color:  #ffff66;
+  width:15%;
+  height:15%;
+  font-size: 2em;
 }
 
 #nav-map-button{
