@@ -27,8 +27,9 @@ IndexView.prototype = {
    historyContainer.style.display = "none";
    var mapContainer = document.getElementById("map-container");
    mapContainer.style.display = "none";
-   var menuButton = document.getElementById('menu-button');
-   menuButton.style.display = "none";
+   var favContainer = document.getElementById("fav-container");
+   favContainer.style.display = "none";
+   
 
    var mainHeader = document.getElementById("main-header");
    mainHeader.style.display = "block";
@@ -45,6 +46,8 @@ IndexView.prototype = {
    mainHistoryButton.style.display = "inline-block";
    var navHistoryButton = document.getElementById("nav-history-button");
    navHistoryButton.style.display = "none";
+   var menuButton = document.getElementById('menu-button');
+   menuButton.style.display = "none";
  }
 }
 
