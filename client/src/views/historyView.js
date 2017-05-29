@@ -19,6 +19,10 @@ HistoryView.prototype = {
     var outerhistoryContainer = document.getElementById("outer-history-container");
     var menuButton = document.getElementById("menu-button");
     menuButton.style.display = "block";
+   
+    var mainHeader = document.getElementById("main-header");
+    mainHeader.style.display = "none";
+
     var historyContainer = document.getElementById("history-container");
     outerhistoryContainer.style.display = "block";
     historyContainer.style.display = "block";

@@ -68,43 +68,6 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var MapView = __webpack_require__(6);
-var HistoryView = __webpack_require__(5);
-
-var IndexView = function() {
-  this.mapView = new MapView();
-  this.historyView = new HistoryView();
-  var mapButton = document.getElementById('map-button');
-   var historyButton = document.getElementById('history-button');
-   var menuButton = document.getElementById('menu-button');
-   mapButton.addEventListener('click', this.mapView.getMap.bind(this.mapView));
-   historyButton.addEventListener('click', this.historyView.getHistory.bind(this.historyView));
-   menuButton.addEventListener('click', this.clear);
-
-  this.app();
-};
-
-IndexView.prototype = {
-  app:function(){
-    console.log("Running app");
-  },
-  clear:function(){
-     var historyContainer = document.getElementById("history-container");
-     historyContainer.style.display = "none";
-     var mapContainer = document.getElementById("map-container");
-     mapContainer.style.display = "none";
-     var menuButton = document.getElementById('menu-button');
-     menuButton.style.display = "none";
-   }
-}
-
-module.exports = IndexView;
-
-
-/***/ }),
-/* 1 */
 /***/ (function(module, exports) {
 
 var Helper = function() {
@@ -130,10 +93,49 @@ module.exports = Helper;
 
 
 /***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var MapView = __webpack_require__(8);
+var HistoryView = __webpack_require__(7);
+
+var IndexView = function() {
+  this.mapView = new MapView();
+  this.historyView = new HistoryView();
+  var mapButton = document.getElementById('map-button');
+   var historyButton = document.getElementById('history-button');
+   var menuButton = document.getElementById('menu-button');
+   mapButton.addEventListener('click', this.mapView.getMap.bind(this.mapView));
+   historyButton.addEventListener('click', this.historyView.getHistory.bind(this.historyView));
+   menuButton.addEventListener('click', this.clear);
+
+  this.app();
+};
+
+IndexView.prototype = {
+  app:function(){
+    console.log("Running app");
+  },
+  clear:function(){
+     var historyContainer = document.getElementById("history-container");
+     historyContainer.style.display = "none";
+     var mapContainer = document.getElementById("map-container");
+     mapContainer.style.display = "none";
+     var menuButton = document.getElementById('menu-button');
+     menuButton.style.display = "none";
+     var mainHeader = document.getElementById("main-header");
+     mainHeader.style.display = "block";
+   }
+}
+
+module.exports = IndexView;
+
+
+/***/ }),
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var IndexView = __webpack_require__(0);
+var IndexView = __webpack_require__(1);
 
 var app = function() {
   new IndexView();
@@ -163,7 +165,7 @@ module.exports = HistoryItem;
 /***/ (function(module, exports, __webpack_require__) {
 
 var HistoryItem = __webpack_require__(3);
-var RequestHelper = __webpack_require__(1);
+var RequestHelper = __webpack_require__(0);
 
 
 var HistoryItems = function() {
@@ -191,93 +193,6 @@ module.exports = HistoryItems;
 
 /***/ }),
 /* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var HistoryItems = __webpack_require__(4)
-
-var HistoryView = function() {
-
-};
-
-HistoryView.prototype = {
-  getHistory: function(){
-    console.log("Clicked history");
-    var historyItems = new HistoryItems();
-    historyItems.all(function(items){
-      this.renderHistory(items);
-    }.bind(this));
-  },
-
-  renderHistory: function(histories){
-    var mapContainer = document.getElementById("map-container");
-    mapContainer.style.display = "none";
-    var outerhistoryContainer = document.getElementById("outer-history-container");
-    var menuButton = document.getElementById("menu-button");
-    menuButton.style.display = "block";
-    var historyContainer = document.getElementById("history-container");
-    outerhistoryContainer.style.display = "block";
-    historyContainer.style.display = "block";
-    historyContainer.innerHTML = "";
-    for(var history of histories){
-      var d = document.createElement('div');
-      var year = document.createElement('p');
-      var text = document.createElement('p');
-      console.log(history.year);
-      year.innerText = history.year;
-      text.innerText = history.fact;
-      d.appendChild(year);
-      d.appendChild(text);
-      historyContainer.appendChild(d);
-    }
-  }
-}
-
-module.exports = HistoryView;
-
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var MapItems = __webpack_require__(8);
-
-var MapView = function() {
-
-};
-
-MapView.prototype = {
-  getMap:function(){
-    console.log("Clicked map");
-    var mapItems = new MapItems();
-    mapItems.all(function(places){
-      console.log(this);
-      this.renderMap(places);
-    }.bind(this));
-  },
-
-  renderMap: function(places){
-    var outerHistoryContainer = document.getElementById("outer-history-container");
-    outerHistoryContainer.style.display = "none";
-    var historyContainer = document.getElementById("history-container");
-    historyContainer.style.display = "none";
-    var menuButton = document.getElementById("menu-button");
-    menuButton.style.display = "block";
-    var mapContainer = document.getElementById("map-container");
-    mapContainer.innerHTML = "";
-    mapContainer.style.display = "block";
-    for(var place of places){
-      var p = document.createElement('p');
-      p.innerText = place.name;
-      mapContainer.appendChild(p);
-    }
-  }
-}
-
-module.exports = MapView;
-
-
-/***/ }),
-/* 7 */
 /***/ (function(module, exports) {
 
 var MapItem = function(options) {
@@ -292,11 +207,11 @@ module.exports = MapItem;
 
 
 /***/ }),
-/* 8 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var MapItem = __webpack_require__(7);
-var RequestHelper = __webpack_require__(1);
+var MapItem = __webpack_require__(5);
+var RequestHelper = __webpack_require__(0);
 
 
 var MapItems = function() {
@@ -320,6 +235,101 @@ MapItems.prototype = {
 };
 
 module.exports = MapItems;
+
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var HistoryItems = __webpack_require__(4)
+
+var HistoryView = function() {
+
+};
+
+HistoryView.prototype = {
+  getHistory: function(){
+    console.log("Clicked history");
+    var historyItems = new HistoryItems();
+    historyItems.all(function(items){
+      this.renderHistory(items);
+    }.bind(this));
+  },
+
+  renderHistory: function(histories){
+    var mapContainer = document.getElementById("map-container");
+    mapContainer.style.display = "none";
+    var outerhistoryContainer = document.getElementById("outer-history-container");
+    var menuButton = document.getElementById("menu-button");
+    menuButton.style.display = "block";
+   
+    var mainHeader = document.getElementById("main-header");
+    mainHeader.style.display = "none";
+
+    var historyContainer = document.getElementById("history-container");
+    outerhistoryContainer.style.display = "block";
+    historyContainer.style.display = "block";
+    historyContainer.innerHTML = "";
+    for(var history of histories){
+      var d = document.createElement('div');
+      var year = document.createElement('p');
+      var text = document.createElement('p');
+      console.log(history.year);
+      year.innerText = history.year;
+      text.innerText = history.fact;
+      d.appendChild(year);
+      d.appendChild(text);
+      historyContainer.appendChild(d);
+    }
+  }
+}
+
+module.exports = HistoryView;
+
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var MapItems = __webpack_require__(6);
+
+var MapView = function() {
+
+};
+
+MapView.prototype = {
+  getMap:function(){
+    console.log("Clicked map");
+    var mapItems = new MapItems();
+    mapItems.all(function(places){
+      console.log(this);
+      this.renderMap(places);
+    }.bind(this));
+  },
+
+  renderMap: function(places){
+    var outerHistoryContainer = document.getElementById("outer-history-container");
+    outerHistoryContainer.style.display = "none";
+    var historyContainer = document.getElementById("history-container");
+    historyContainer.style.display = "none";
+    var menuButton = document.getElementById("menu-button");
+    menuButton.style.display = "block";
+
+    var mainHeader = document.getElementById("main-header");
+    mainHeader.style.display = "none";
+
+    var mapContainer = document.getElementById("map-container");
+    mapContainer.innerHTML = "";
+    mapContainer.style.display = "block";
+    for(var place of places){
+      var p = document.createElement('p');
+      p.innerText = place.name;
+      mapContainer.appendChild(p);
+    }
+  }
+}
+
+module.exports = MapView;
 
 
 /***/ })

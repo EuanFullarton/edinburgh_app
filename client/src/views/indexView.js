@@ -25,6 +25,8 @@ IndexView.prototype = {
      mapContainer.style.display = "none";
      var menuButton = document.getElementById('menu-button');
      menuButton.style.display = "none";
+     var mainHeader = document.getElementById("main-header");
+     mainHeader.style.display = "block";
    }
 }
 
