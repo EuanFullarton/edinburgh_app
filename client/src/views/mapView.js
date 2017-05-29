@@ -1,4 +1,5 @@
 var MapItems = require('../models/mapItems');
+var MapItem = require('../models/mapItem');
 var FavItems = require('../models/favItems');
 
 var MapView = function() {
@@ -19,6 +20,7 @@ MapView.prototype = {
   },
 
   renderMap: function(places){
+    var mapView = this;
     var mapContainer = document.getElementById("map-container");
     mapContainer.style.display = "block";
 
@@ -64,6 +66,7 @@ MapView.prototype = {
       var marker = new google.maps.Marker({
         name: place.name,
         info: place.info,
+        latlng: place.latlng,
         position: { lat: place.latlng.lat, lng: place.latlng.lng },
         map: googleMap
       });
@@ -73,18 +76,25 @@ MapView.prototype = {
         maxWidth: 200
       });
 
-      // marker.addListener('click', function() {
-      //     infowindow.open(googleMap, this);
-      //     console.log(this);
-      //   });       
-
       google.maps.event.addListener(marker, 'click', function () {
-        infowindow.setContent(this.name + ": " + this.info + "<button onclick= 'click' > Add to favourites</button>");
+        infowindow.setContent(this.name + ": </br></br>" + this.info + "</br></br>" +"<button id='fav-button' onclick= 'click' > Add to favourites</button>");
+
+        var thisItemName = this.name;
+        var thisItemInfo = this.info;
+        var thisItemLatLng = this.latlng;
+        var favPlace = new MapItem({name: thisItemName, info: thisItemInfo, latlng: thisItemLatLng});
         infowindow.open(googleMap, this);
+
+        var favouritesButton = document.getElementById('fav-button');
+
+        favouritesButton.addEventListener('click', function(){
+            mapView.addToFavourites(favPlace)
+        });
       });
 
     }
   },
+
   renderFavs: function(favs){
     var favsContainer = document.getElementById("fav-container");
 
@@ -96,6 +106,13 @@ MapView.prototype = {
       favsContainer.appendChild(p);
 
     };
+  },
+
+  addToFavourites: function(place){
+    var favItems = new FavItems();
+    favItems.all(function(places){
+      console.log(place), place;
+    });
   }
 }
 
