@@ -15,6 +15,7 @@ MapView.prototype = {
   },
 
   renderMap: function(places){
+    
     var outerHistoryContainer = document.getElementById("outer-history-container");
     outerHistoryContainer.style.display = "none";
     var historyContainer = document.getElementById("history-container");
@@ -29,7 +30,6 @@ MapView.prototype = {
     var mapHeader = document.getElementById("map-title");
     mapHeader.style.display = "block";
     
-
     var mapButton = document.getElementById("map-button");
     mapButton.style.display = "none";
     var historyButton = document.getElementById("history-button");
@@ -42,7 +42,12 @@ MapView.prototype = {
       var p = document.createElement('p');
       p.innerText = place.name;
       mapContainer.appendChild(p);
-    }
+    };
+
+    var googleMap = new google.maps.Map(mapContainer, {
+    center: {lat: 55.953251, lng: -3.188267},
+    zoom: 10
+    });
   }
 }
 
