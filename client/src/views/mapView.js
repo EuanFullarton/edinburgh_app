@@ -118,9 +118,10 @@ MapView.prototype = {
 
   addToFavourites: function(place){
     var favItems = new FavItems();
-    favItems.post(function(place){
-      console.log("callback"), place;
-    });
+    var callback = function(place){
+      console.log("callback");
+    };
+    favItems.post(callback, place);
   }
 }
 

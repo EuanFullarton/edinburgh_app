@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var favRouter = express.Router();
+var MapItem = require('../client/src/models/mapItem');
 
 var FavQuery = require('../db/favQuery');
 
@@ -13,8 +14,13 @@ favRouter.get('/', function(req, res){
 })
 
 favRouter.post('/', function(req, res){
-  query.add(function(data){
-    res.json(data);
+  var fav = new MapItem({
+    name: req.body.name,
+    info: req.body.info,
+    latlng: req.body.latlng
+  });
+  query.add(fav, function(results){
+    res.json(results);
   })
 })
 

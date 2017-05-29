@@ -17,10 +17,11 @@ FavQuery.prototype = {
     });
   },
 
-  add:function(onQueryFinished){
+  add:function(favToAdd, onQueryFinished){
     MongoClient.connect(this.url, function(err, db){
       if(db){
         var collection = db.collection('favs');
+        collection.insert(favToAdd);
         collection.find().toArray(function(err, docs){
           onQueryFinished(docs);
         });
