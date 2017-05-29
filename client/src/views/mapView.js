@@ -30,10 +30,14 @@ MapView.prototype = {
     mapHeader.style.display = "block";
     
 
-    var mapButton = document.getElementById("map-button");
-    mapButton.style.display = "none";
-    var historyButton = document.getElementById("history-button");
-    historyButton.style.display = "inline-block";
+    var mainMapButton = document.getElementById("main-map-button");
+    mainMapButton.style.display = "none";
+    var navMapButton = document.getElementById("nav-map-button");
+    navMapButton.style.display = "none";
+    var mainHistoryButton = document.getElementById("main-history-button");
+    mainHistoryButton.style.display = "none";
+    var navHistoryButton = document.getElementById("nav-history-button");
+    navHistoryButton.style.display = "inline-block";
 
     var mapContainer = document.getElementById("map-container");
     mapContainer.innerHTML = "";
