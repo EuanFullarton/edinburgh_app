@@ -46,16 +46,23 @@ MapView.prototype = {
     var mapContainer = document.getElementById("map-container");
     mapContainer.innerHTML = "";
     mapContainer.style.display = "block";
-    for(var place of places){
-      var p = document.createElement('p');
-      p.innerText = place.name;
-      mapContainer.appendChild(p);
-    };
 
     var googleMap = new google.maps.Map(mapContainer, {
     center: {lat: 55.953251, lng: -3.188267},
     zoom: 10
     });
+
+    for(var place of places){
+      var p = document.createElement('p');
+      p.innerText = place.name;
+      mapContainer.appendChild(p);
+      console.log(place)
+      
+      var marker = new google.maps.Marker({
+        position: { lat: place.latlng.lat, lng: place.latlng.lng },
+        map: googleMap
+      })          
+    };
   }
 }
 
