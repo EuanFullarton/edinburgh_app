@@ -7,7 +7,7 @@ var FavItems = function() {
 
 FavItems.prototype = {
   all: function(callback){
-    this.requestHelper.makeGetRequest('http://localhost:3000/api/fav', function(results){
+    this.requestHelper.makeGetRequest('http://localhost:3000/api/favs', function(results){
       var items = this.populateItems(results);
       callback(items);
     }.bind(this));
