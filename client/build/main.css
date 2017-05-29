@@ -63,7 +63,7 @@ body{
   display:none;
 }
 
-#map-button{
+#main-map-button{
   background-color: red;
   padding:5%;
   font-size: 2em;
@@ -77,12 +77,12 @@ body{
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
-#map-button:hover{
+#main-map-button:hover{
   background-color: #ff3333;
   color:white;
 }
 
-#history-button{
+#main-history-button{
   background-color: yellow;
   padding:5%;
   font-size: 2em;
@@ -94,6 +94,14 @@ body{
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
-#history-button:hover{
+#main-history-button:hover{
   background-color:  #ffff66;
+}
+
+#nav-map-button{
+  display:none;
+}
+
+#nav-history-button{
+  display:none;
 }

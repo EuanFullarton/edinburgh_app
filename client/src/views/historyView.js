@@ -28,10 +28,14 @@ HistoryView.prototype = {
     historyHeader.style.display = "block";
     
 
-    var historyButton = document.getElementById("history-button");
-    historyButton.style.display = "none";
-    var mapButton = document.getElementById("map-button");
-    mapButton.style.display = "inline-block";
+    var mainHistoryButton = document.getElementById("main-history-button");
+    mainHistoryButton.style.display = "none";
+    var mainMapButton = document.getElementById("main-map-button");
+    mainMapButton.style.display = "none";
+    var navHistoryButton = document.getElementById("nav-history-button");
+    navHistoryButton.style.display = "none";
+    var navMapButton = document.getElementById("nav-map-button");
+    navMapButton.style.display = "inline-block";
 
     var historyContainer = document.getElementById("history-container");
     outerhistoryContainer.style.display = "block";
