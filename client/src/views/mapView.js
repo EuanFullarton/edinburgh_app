@@ -1,4 +1,5 @@
 var MapItems = require('../models/mapItems');
+var FavItems = require('../models/favItems');
 
 var MapView = function() {
 
@@ -8,23 +9,26 @@ MapView.prototype = {
   getMap:function(){
     console.log("Clicked map");
     var mapItems = new MapItems();
+    var favItems = new FavItems();
     mapItems.all(function(places){
-      console.log(this);
       this.renderMap(places);
+    }.bind(this));
+    favItems.all(function(favs){
+      this.renderFavs(favs);
     }.bind(this));
   },
 
   renderMap: function(places){
     var mapContainer = document.getElementById("map-container");
     mapContainer.style.display = "block";
-    
+
     var outerHistoryContainer = document.getElementById("outer-history-container");
     outerHistoryContainer.style.display = "none";
     var historyContainer = document.getElementById("history-container");
     historyContainer.style.display = "none";
     var menuButton = document.getElementById("menu-button");
     menuButton.style.display = "block";
-    
+
     var mainHeader = document.getElementById("main-header");
     mainHeader.style.display = "none";
     var historyHeader = document.getElementById("history-title");
@@ -56,6 +60,18 @@ MapView.prototype = {
     center: {lat: 55.953251, lng: -3.188267},
     zoom: 10
     });
+  },
+
+  renderFavs: function(favs){
+    var favsContainer = document.getElementById("fav-container");
+
+    favsContainer.innerHTML = "";
+    favsContainer.style.display = "block";
+    for(var fav of favs){
+      var p = document.createElement('p');
+      p.innerText = fav.name;
+      favsContainer.appendChild(p);
+    };
   }
 }
 
