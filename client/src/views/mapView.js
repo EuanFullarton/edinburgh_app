@@ -65,6 +65,7 @@ MapView.prototype = {
         name: place.name,
         info: place.info,
         position: { lat: place.latlng.lat, lng: place.latlng.lng },
+        animation: google.maps.Animation.DROP,
         map: googleMap
       });
 
