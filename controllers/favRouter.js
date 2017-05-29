@@ -24,4 +24,10 @@ favRouter.post('/', function(req, res){
   })
 })
 
+favRouter.delete('/:id', function(req, res) {
+  query.delete(req, function(results){
+    res.json(results);
+  })
+})
+
 module.exports = favRouter;
