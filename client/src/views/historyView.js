@@ -19,8 +19,15 @@ HistoryView.prototype = {
     var outerhistoryContainer = document.getElementById("outer-history-container");
     var menuButton = document.getElementById("menu-button");
     menuButton.style.display = "block";
+    
     var mainHeader = document.getElementById("main-header");
     mainHeader.style.display = "none";
+    var mapHeader = document.getElementById("map-title");
+    mapHeader.style.display = "none";
+    var historyHeader = document.getElementById("history-title");
+    historyHeader.style.display = "block";
+    
+
     var historyButton = document.getElementById("history-button");
     historyButton.style.display = "none";
     var mapButton = document.getElementById("map-button");
