@@ -17,8 +17,9 @@ HistoryView.prototype = {
     var mapContainer = document.getElementById("map-container");
     mapContainer.style.display = "none";
     var outerhistoryContainer = document.getElementById("outer-history-container");
-    var menuButton = document.getElementById("menu-button");
-    menuButton.style.display = "block";
+    var favContainer = document.getElementById("fav-container");
+    favContainer.style.display = "none";
+   
     
     var mainHeader = document.getElementById("main-header");
     mainHeader.style.display = "none";
@@ -36,6 +37,8 @@ HistoryView.prototype = {
     navHistoryButton.style.display = "none";
     var navMapButton = document.getElementById("nav-map-button");
     navMapButton.style.display = "inline-block";
+    var menuButton = document.getElementById("menu-button");
+    menuButton.style.display = "block";
 
     var historyContainer = document.getElementById("history-container");
     outerhistoryContainer.style.display = "block";
