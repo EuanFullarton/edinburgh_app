@@ -15,8 +15,12 @@ MapView.prototype = {
   },
 
   renderMap: function(places){
+<<<<<<< HEAD
     var mapContainer = document.getElementById("map-container");
     mapContainer.style.display = "block";
+=======
+    
+>>>>>>> feature/main_page
     var outerHistoryContainer = document.getElementById("outer-history-container");
     outerHistoryContainer.style.display = "none";
     var historyContainer = document.getElementById("history-container");
