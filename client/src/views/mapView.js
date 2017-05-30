@@ -69,11 +69,15 @@ MapView.prototype = {
       var p = document.createElement('p');
       p.innerText = place.name;
       mapContainer.appendChild(p);
-
+      console.log(place)
       var marker = new google.maps.Marker({
         name: place.name,
         info: place.info,
+
+        image: place.image,
+
         latlng: place.latlng,
+
         position: { lat: place.latlng.lat, lng: place.latlng.lng },
         animation: google.maps.Animation.DROP,
         map: googleMap
@@ -81,16 +85,21 @@ MapView.prototype = {
 
       var infowindow = new google.maps.InfoWindow({
         content: place.name + ": " + place.info,
-        maxWidth: 200
+        maxWidth: 300
+
       });
 
       google.maps.event.addListener(marker, 'click', function () {
+<<<<<<< HEAD
+        infowindow.setContent('<img src="' + this.image +'" width = 130 height = 90 />'+ " "+ this.name + ": " + this.info + "<button onclick= 'click' > Add to favourites</button>");
+=======
         infowindow.setContent(this.name + ": </br></br>" + this.info + "</br></br>" +"<button id='fav-button' onclick= 'click' > Add to favourites</button>");
 
         var thisItemName = this.name;
         var thisItemInfo = this.info;
         var thisItemLatLng = this.latlng;
         var favPlace = new MapItem({name: thisItemName, info: thisItemInfo, latlng: thisItemLatLng});
+>>>>>>> develop
         infowindow.open(googleMap, this);
 
         var favouritesButton = document.getElementById('fav-button');
