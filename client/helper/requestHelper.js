@@ -27,21 +27,21 @@ Helper.prototype = {
       callback(resultsObject)
     });
     request.send(payload);
-  }
+  },
 
-  // makeDeleteRequest: function(url, callback){
-  //   var request = new XMLHttpRequest();
-  //   request.open("DELETE", url);
-  //   request.addEventListener("load", function(){
-  //     console.log("successful request");
-  //     if(request.status !== 200) return;
-  //     var jsonString = request.responseText;
-  //     var resultsObject = JSON.parse(jsonString);
-  //     callback(resultsObject)
-  //   });
-  //   console.log("making request");
-  //   request.send();
-  // }
+  makeUpdateRequest: function(url, callback){
+    var request = new XMLHttpRequest();
+    request.open("UPDATE", url);
+    request.addEventListener("load", function(){
+      console.log("successful request");
+      if(request.status !== 200) return;
+      var jsonString = request.responseText;
+      var resultsObject = JSON.parse(jsonString);
+      callback(resultsObject)
+    });
+    console.log("making request");
+    request.send();
+  }
 }
 
 module.exports = Helper;

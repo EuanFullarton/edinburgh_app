@@ -24,16 +24,16 @@ favRouter.post('/', function(req, res){
   })
 })
 
-// favRouter.delete('/:id', function(req, res) {
-//   query.delete(req.params.id, function(){
-//     console.log("deleting");
-//   });
-// })
-//
-// favRouter.get('/:id', function(req, res) {
-//   query.single(req.params.id, function(data){
-//     res.json(data);
-//   })
-// })
+favRouter.update('/:id', function(req, res) {
+  query.update(req.params.id, function(){
+    console.log("deleting");
+  });
+})
+
+favRouter.get('/:id', function(req, res) {
+  query.single(req.params.id, function(data){
+    res.json(data);
+  })
+})
 
 module.exports = favRouter;

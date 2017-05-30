@@ -21,10 +21,10 @@ FavItems.prototype = {
     this.requestHelper.makePostRequest('http://localhost:3000/api/favs', callback, favData);
   },
 
-  delete: function(id, callback){
+  update: function(id, callback){
     var url = 'http://localhost:3000/api/favs'+"/"+id;
     console.log(url);
-    this.requestHelper.makeDeleteRequest(url, callback);
+    this.requestHelper.makeUpdateRequest(url, callback);
   },
 
   populateItems: function(results){
