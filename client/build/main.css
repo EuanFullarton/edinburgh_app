@@ -6,6 +6,26 @@ body{
   margin:auto;
 }
 
+.main-header{
+  margin:auto;
+  display:block;
+  text-align: center;
+  color: white;
+  font-size: 3em;
+  font-weight: bolder;
+  -webkit-text-stroke: 0.75px black;
+}
+
+#info-section{
+  margin:auto;
+  display:block;
+  text-align: center;
+  width:50%;
+  color:white;
+  font-size:1.75em;
+  -webkit-text-stroke: .5px black;
+}
+
 .history-container {
   display: none;
 }
@@ -65,17 +85,6 @@ body{
   overflow: scroll;
   background-color: rgb(255, 255, 255);
   background-color: rgba(255, 255, 255, 0.6);
-}
-
-.main-header{
-  margin:auto;
-  display:block;
-  text-align: center;
-  color: white;
-  font-size: 3em;
-  font-weight: bolder;
-  -webkit-text-stroke: 0.75px black;
-
 }
 
 #menu-button{

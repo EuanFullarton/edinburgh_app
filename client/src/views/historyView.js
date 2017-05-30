@@ -27,6 +27,12 @@ HistoryView.prototype = {
     mapHeader.style.display = "none";
     var historyHeader = document.getElementById("history-title");
     historyHeader.style.display = "block";
+    var infoSection = document.getElementById("info-section");
+    infoSection.innerText = "Scroll along the timeline to read about Edinburgh's history.";
+    infoSection.style.fontSize = "0.75em";
+    infoSection.style.width = "100%";
+    infoSection.style.textAlign = "left";
+    historyHeader.appendChild(infoSection)
     
 
     var mainHistoryButton = document.getElementById("main-history-button");
