@@ -31,7 +31,7 @@ Helper.prototype = {
 
   makeUpdateRequest: function(url, callback){
     var request = new XMLHttpRequest();
-    request.open("PUT", url);
+    request.open("UPDATE", url);
     request.addEventListener("load", function(){
       console.log("successful request");
       if(request.status !== 200) return;

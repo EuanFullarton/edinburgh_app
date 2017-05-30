@@ -161,7 +161,7 @@ MapView.prototype = {
     var callback = function(place){
       console.log("callback");
     };
-    mapItems.update(deleteID, callback);
+    MapItems.delete(deleteID, callback);
   }
 }
 

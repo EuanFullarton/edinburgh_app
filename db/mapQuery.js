@@ -21,8 +21,8 @@ MapQuery.prototype = {
     MongoClient.connect(this.url, function(err, db){
       if(db){
         var collection = db.collection('favs');
-        collection.update({"_id": id},{"favourited": false});
-        collection.find({"_id": id}).toArray(function(err, docs){
+        collection.update({"_id": id},{"favourited":true});
+        collection.find().toArray(function(err, docs){
           onQueryFinished(docs);
         });
       }

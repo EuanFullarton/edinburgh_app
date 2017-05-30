@@ -22,7 +22,7 @@ MapItems.prototype = {
   },
 
   update: function(id, callback){
-    var url = 'http://localhost:3000/api/map'+"/"+id;
+    var url = 'http://localhost:3000/api/favs'+"/"+id;
     console.log(url);
     this.requestHelper.makeUpdateRequest(url, callback);
   }
