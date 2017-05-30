@@ -13,6 +13,14 @@ FavItems.prototype = {
     }.bind(this));
   },
 
+  post: function(callback, payload){
+    var favData = JSON.stringify(payload);
+    var callback = function(){
+      console.log("Callback 2");
+    };
+    this.requestHelper.makePostRequest('http://localhost:3000/api/favs', callback, favData);
+  },
+
   populateItems: function(results){
     var items = results.map(function(resultObject){
       return new MapItem(resultObject);

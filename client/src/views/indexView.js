@@ -48,6 +48,7 @@ IndexView.prototype = {
    navHistoryButton.style.display = "none";
    var menuButton = document.getElementById('menu-button');
    menuButton.style.display = "none";
+
  }
 }
 

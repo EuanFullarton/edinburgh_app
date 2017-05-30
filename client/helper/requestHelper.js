@@ -19,6 +19,7 @@ Helper.prototype = {
   makePostRequest: function(url, callback, payload){
     var request = new XMLHttpRequest();
     request.open("POST", url);
+    request.setRequestHeader('Content-Type', 'application/json');
     request.addEventListener("load", function(){
       if(request.status !== 200) return;
       var jsonString = request.responseText;

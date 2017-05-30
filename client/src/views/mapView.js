@@ -1,4 +1,5 @@
 var MapItems = require('../models/mapItems');
+var MapItem = require('../models/mapItem');
 var FavItems = require('../models/favItems');
 
 var MapView = function() {
@@ -7,7 +8,6 @@ var MapView = function() {
 
 MapView.prototype = {
   getMap:function(){
-    console.log("Clicked map");
     var mapItems = new MapItems();
     var favItems = new FavItems();
     mapItems.all(function(places){
@@ -19,6 +19,7 @@ MapView.prototype = {
   },
 
   renderMap: function(places){
+    var mapView = this;
     var mapContainer = document.getElementById("map-container");
     mapContainer.style.display = "block";
 
@@ -26,8 +27,26 @@ MapView.prototype = {
     outerHistoryContainer.style.display = "none";
     var historyContainer = document.getElementById("history-container");
     historyContainer.style.display = "none";
+
+    var navHistoryButton = document.getElementById("nav-history-button");
+    navHistoryButton.style.display = "inline-block";
+    var mainMapButton = document.getElementById("main-map-button");
+    mainMapButton.style.display = "none";
+    var navMapButton = document.getElementById("nav-map-button");
+    navMapButton.style.display = "none";
     var menuButton = document.getElementById("menu-button");
     menuButton.style.display = "block";
+
+    var navButtons = document.getElementsByClassName("nav-button");
+    var mainButtons = document.getElementsByClassName("main-button");
+    for (button of navButtons){
+      button.style.margin = "0";
+      button.style.padding = "1%";
+    };
+
+    for (button of mainButtons){
+      button.style.display = "none";
+    }
 
     var mainHeader = document.getElementById("main-header");
     mainHeader.style.display = "none";
@@ -37,23 +56,13 @@ MapView.prototype = {
     mapHeader.style.display = "block";
 
 
-    var mainMapButton = document.getElementById("main-map-button");
-    mainMapButton.style.display = "none";
-    var navMapButton = document.getElementById("nav-map-button");
-    navMapButton.style.display = "none";
-    var mainHistoryButton = document.getElementById("main-history-button");
-    mainHistoryButton.style.display = "none";
-    var navHistoryButton = document.getElementById("nav-history-button");
-    navHistoryButton.style.display = "inline-block";
-
-
     var mapContainer = document.getElementById("map-container");
     mapContainer.innerHTML = "";
     mapContainer.style.display = "block";
 
     var googleMap = new google.maps.Map(mapContainer, {
-    center: {lat: 55.953251, lng: -3.188267},
-    zoom: 13
+      center: {lat: 55.953251, lng: -3.188267},
+      zoom: 13
     });
 
     for(var place of places){
@@ -64,8 +73,13 @@ MapView.prototype = {
       var marker = new google.maps.Marker({
         name: place.name,
         info: place.info,
+
         image: place.image,
+
+        latlng: place.latlng,
+
         position: { lat: place.latlng.lat, lng: place.latlng.lng },
+        animation: google.maps.Animation.DROP,
         map: googleMap
       });
 
@@ -75,18 +89,29 @@ MapView.prototype = {
 
       });
 
-      // marker.addListener('click', function() {
-      //     infowindow.open(googleMap, this);
-      //     console.log(this);
-      //   });       
-
       google.maps.event.addListener(marker, 'click', function () {
+<<<<<<< HEAD
         infowindow.setContent('<img src="' + this.image +'" width = 130 height = 90 />'+ " "+ this.name + ": " + this.info + "<button onclick= 'click' > Add to favourites</button>");
+=======
+        infowindow.setContent(this.name + ": </br></br>" + this.info + "</br></br>" +"<button id='fav-button' onclick= 'click' > Add to favourites</button>");
+
+        var thisItemName = this.name;
+        var thisItemInfo = this.info;
+        var thisItemLatLng = this.latlng;
+        var favPlace = new MapItem({name: thisItemName, info: thisItemInfo, latlng: thisItemLatLng});
+>>>>>>> develop
         infowindow.open(googleMap, this);
+
+        var favouritesButton = document.getElementById('fav-button');
+
+        favouritesButton.addEventListener('click', function(){
+            mapView.addToFavourites(favPlace)
+        });
       });
 
     }
   },
+
   renderFavs: function(favs){
     var favsContainer = document.getElementById("fav-container");
 
@@ -98,6 +123,14 @@ MapView.prototype = {
       favsContainer.appendChild(p);
 
     };
+  },
+
+  addToFavourites: function(place){
+    var favItems = new FavItems();
+    var callback = function(place){
+      console.log("callback");
+    };
+    favItems.post(callback, place);
   }
 }
 
