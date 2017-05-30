@@ -1,6 +1,6 @@
 var MapItems = require('../models/mapItems');
 var MapItem = require('../models/mapItem');
-var FavItems = require('../models/favItems');
+// var FavItems = require('../models/favItems');
 
 var MapView = function() {
 
@@ -9,13 +9,14 @@ var MapView = function() {
 MapView.prototype = {
   getMap:function(){
     var mapItems = new MapItems();
-    var favItems = new FavItems();
+    // var favItems = new FavItems();
     mapItems.all(function(places){
       this.renderMap(places);
+      this.renderFavs(places);
     }.bind(this));
-    favItems.all(function(favs){
-      this.renderFavs(favs);
-    }.bind(this));
+    // favItems.all(function(favs){
+    //   this.renderFavs(favs);
+    // }.bind(this));
   },
 
   renderMap: function(places){
@@ -72,6 +73,7 @@ MapView.prototype = {
     });
 
     for(var place of places){
+      
       var p = document.createElement('p');
       p.innerText = place.name;
       mapContainer.appendChild(p);
@@ -79,7 +81,7 @@ MapView.prototype = {
       var marker = new google.maps.Marker({
         name: place.name,
         info: place.info,
-
+        favourited: place.favourited,
         image: place.image,
 
         latlng: place.latlng,
@@ -99,50 +101,57 @@ MapView.prototype = {
         infowindow.setContent('<img src="' + this.image +'" width = 130 height = 90 />'+ "</br> "+ this.name + ": " + "</br></br>" + this.info + "</br></br>" + "<button onclick= 'click' id= 'fav-button' > Add to favourites</button>");
         var thisItemName = this.name;
         var thisItemInfo = this.info;
+        var thisFavourited = this.favourited;
         var thisItemLatLng = this.latlng;
-        var favPlace = new MapItem({name: thisItemName, info: thisItemInfo, latlng: thisItemLatLng});
+        var favPlace = new MapItem({name: thisItemName, info: thisItemInfo, latlng: thisItemLatLng, favourited: thisFavourited});
 
         infowindow.open(googleMap, this);
 
         var favouritesButton = document.getElementById('fav-button');
 
         favouritesButton.addEventListener('click', function(){
-            mapView.addToFavourites(favPlace)
+            if (!thisFavourited){
+              console.log(this)
+              thisFavourited = true;
+          }
         });
       });
 
     }
   },
 
-  renderFavs: function(favs){
+  renderFavs: function(places){
     var favsContainer = document.getElementById("fav-container");
 
     favsContainer.innerHTML = "";
     favsContainer.style.display = "block";
-    for(var fav of favs){
-      var favBox = document.createElement('div');
-      var p1 = document.createElement('p');
-      var p2 = document.createElement('p');
-      var deleteButton = document.createElement('BUTTON');
-      p1.innerText = fav.name;
-      p2.innerText = fav.info;
-      deleteButton.name = "Delete";
-      deleteButton.value = "Delete";
-      favBox.appendChild(p1);
-      favBox.appendChild(p2);
-      favBox.appendChild(deleteButton);
-      favsContainer.appendChild(favBox);
 
+    for(var fav of places){
+      console.log("here:", places)
+     if (fav.favourited){
+        var favBox = document.createElement('div');
+        var p1 = document.createElement('p');
+        var p2 = document.createElement('p');
+        var deleteButton = document.createElement('BUTTON');
+        p1.innerText = fav.name;
+        p2.innerText = fav.info;
+        deleteButton.name = "Delete";
+        deleteButton.value = "Delete";
+        favBox.appendChild(p1);
+        favBox.appendChild(p2);
+        favBox.appendChild(deleteButton);
+        favsContainer.appendChild(favBox);  
+     }
     };
   },
 
-  addToFavourites: function(place){
-    var favItems = new FavItems();
-    var callback = function(place){
-      console.log("callback");
-    };
-    favItems.post(callback, place);
-  }
+  // addToFavourites: function(place){
+  //   var favItems = new FavItems();
+  //   var callback = function(place){
+  //     console.log("callback");
+  //   };
+  //   favItems.post(callback, place);
+  // }
 }
 
 module.exports = MapView;

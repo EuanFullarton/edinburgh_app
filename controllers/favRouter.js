@@ -17,7 +17,8 @@ favRouter.post('/', function(req, res){
   var fav = new MapItem({
     name: req.body.name,
     info: req.body.info,
-    latlng: req.body.latlng
+    latlng: req.body.latlng,
+    favourited: req.body.favourited
   });
   query.add(fav, function(results){
     res.json(results);
