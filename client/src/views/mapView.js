@@ -136,7 +136,7 @@ MapView.prototype = {
       var deleteButton = document.getElementById(fav.name);
 
       deleteButton.addEventListener('click', function(){
-        mapView.deleteItem(fav._id);
+        mapView.updateItem(fav._id);
       });
     };
   },
@@ -149,12 +149,12 @@ MapView.prototype = {
     favItems.post(callback, place);
   },
 
-  deleteItem: function(deleteID){
-    var favItems = new FavItems();
+  updateItem: function(deleteID){
+    var mapItems = new MapItems();
     var callback = function(place){
       console.log("callback");
     };
-    // favItems.delete(deleteID, callback);
+    MapItems.delete(deleteID, callback);
   }
 }
 
