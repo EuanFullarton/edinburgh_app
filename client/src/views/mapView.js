@@ -125,8 +125,8 @@ MapView.prototype = {
  +      deleteButton.addEventListener('click', function(){
  +        mapView.updateItem(fav._id);
  +      });
-     }
-    };
+      };
+    }
   },
 
   // addToFavourites: function(place){
