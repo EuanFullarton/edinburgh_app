@@ -33,6 +33,13 @@ IndexView.prototype = {
 
    var mainHeader = document.getElementById("main-header");
    mainHeader.style.display = "block";
+   var infoSection = document.getElementById("info-section");
+   infoSection.innerText = "Select 'map' to view notable landmarks, or choose 'history' to learn more about how the city has changed over time.";
+   infoSection.style.margin = "auto";
+   infoSection.style.fontSize = ".55em";
+   infoSection.style.width = "50%";
+   infoSection.style.textAlign = "center";
+   mainHeader.appendChild(infoSection)
    var mapHeader = document.getElementById("map-title");
    mapHeader.style.display = "none";
    var historyHeader = document.getElementById("history-title");

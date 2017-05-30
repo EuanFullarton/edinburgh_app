@@ -4,6 +4,27 @@ body{
   background-size: 100%;
   background-repeat: no-repeat;
   margin:auto;
+  font-family: 'Fjalla One', sans-serif;
+}
+
+.main-header{
+  margin:auto;
+  display:block;
+  text-align: center;
+  color: white;
+  font-size: 3em;
+  font-weight: bolder;
+  -webkit-text-stroke: 0.75px black;
+}
+
+#info-section{
+  margin:auto;
+  display:block;
+  text-align: center;
+  width:50%;
+  color:white;
+  font-size:1.75em;
+  -webkit-text-stroke: .5px black;
 }
 
 .history-container {
@@ -15,7 +36,7 @@ body{
   overflow-x: scroll;
   overflow-y: hidden;
   width: 100%;
-  height: 500px;
+  height: 35em;
   margin-bottom:5%;
 }
 
@@ -38,42 +59,35 @@ body{
 .history-title {
   display: none;
   color: white;
+  margin-left: 2%;
   -webkit-text-stroke: 0.75px black;
 }
 
 .map-title {
   display: none;
   color: white;
+  margin-left: 2%;
   -webkit-text-stroke: 0.75px black;
 }
 
 #map-container{
   height: 30em;
   width:70%;
-  margin:auto;
   float:left;
+  margin-left:2%;
+  margin-bottom:2%;
 }
 
 #fav-container{
   display: none;
+  height:30em;
   width:25%;
-  margin:auto;
   float:right;
-  height: 500px;
+  margin-right: 2%;
+  margin-bottom: 2%;
   overflow: scroll;
   background-color: rgb(255, 255, 255);
   background-color: rgba(255, 255, 255, 0.6);
-}
-
-.main-header{
-  margin:auto;
-  display:block;
-  text-align: center;
-  color: white;
-  font-size: 3em;
-  font-weight: bolder;
-  -webkit-text-stroke: 0.75px black;
-
 }
 
 #menu-button{
