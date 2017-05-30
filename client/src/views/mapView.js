@@ -54,6 +54,12 @@ MapView.prototype = {
     historyHeader.style.display = "none";
     var mapHeader = document.getElementById("map-title");
     mapHeader.style.display = "block";
+    var infoSection = document.getElementById("info-section");
+    infoSection.innerText = "Select a pin to view more information, and add to favourites if you would like to store it for later.";
+    infoSection.style.fontSize = "0.75em";
+    infoSection.style.width = "100%";
+    infoSection.style.textAlign = "left";
+    mapHeader.appendChild(infoSection)
 
 
     var mapContainer = document.getElementById("map-container");
