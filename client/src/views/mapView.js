@@ -95,6 +95,7 @@ MapView.prototype = {
         var thisItemInfo = this.info;
         var thisItemLatLng = this.latlng;
         var favPlace = new MapItem({name: thisItemName, info: thisItemInfo, latlng: thisItemLatLng});
+
         infowindow.open(googleMap, this);
 
         var favouritesButton = document.getElementById('fav-button');
