@@ -90,7 +90,7 @@ MapView.prototype = {
       });
 
       google.maps.event.addListener(marker, 'click', function () {
-        infowindow.setContent('<img src="' + this.image +'" width = 130 height = 90 />'+ "</br> "+ this.name + ": " + "</br></br>" + this.info + "</br></br>" + "<button onclick= 'click' > Add to favourites</button>");
+        infowindow.setContent('<img src="' + this.image +'" width = 130 height = 90 />'+ "</br> "+ this.name + ": " + "</br></br>" + this.info + "</br></br>" + "<button onclick= 'click' id= 'fav-button' > Add to favourites</button>");
         var thisItemName = this.name;
         var thisItemInfo = this.info;
         var thisItemLatLng = this.latlng;
