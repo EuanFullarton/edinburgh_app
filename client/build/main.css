@@ -38,28 +38,30 @@ body{
 .history-title {
   display: none;
   color: white;
+  margin-left: 2%;
   -webkit-text-stroke: 0.75px black;
 }
 
 .map-title {
   display: none;
   color: white;
+  margin-left: 2%;
   -webkit-text-stroke: 0.75px black;
 }
 
 #map-container{
   height: 30em;
   width:70%;
-  margin:auto;
   float:left;
+  margin-left:2%;
 }
 
 #fav-container{
   display: none;
+  height:30em;
   width:25%;
-  margin:auto;
   float:right;
-  height: 500px;
+  margin-right: 2%;
   overflow: scroll;
   background-color: rgb(255, 255, 255);
   background-color: rgba(255, 255, 255, 0.6);
