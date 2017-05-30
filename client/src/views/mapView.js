@@ -60,17 +60,19 @@ MapView.prototype = {
       var p = document.createElement('p');
       p.innerText = place.name;
       mapContainer.appendChild(p);
-
+      console.log(place)
       var marker = new google.maps.Marker({
         name: place.name,
         info: place.info,
+        image: place.image,
         position: { lat: place.latlng.lat, lng: place.latlng.lng },
         map: googleMap
       });
 
       var infowindow = new google.maps.InfoWindow({
         content: place.name + ": " + place.info,
-        maxWidth: 200
+        maxWidth: 300
+
       });
 
       // marker.addListener('click', function() {
@@ -79,7 +81,7 @@ MapView.prototype = {
       //   });       
 
       google.maps.event.addListener(marker, 'click', function () {
-        infowindow.setContent(this.name + ": " + this.info + "<button onclick= 'click' > Add to favourites</button>");
+        infowindow.setContent('<img src="' + this.image +'" width = 130 height = 90 />'+ " "+ this.name + ": " + this.info + "<button onclick= 'click' > Add to favourites</button>");
         infowindow.open(googleMap, this);
       });
 
