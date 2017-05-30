@@ -35,7 +35,7 @@ FavQuery.prototype = {
         var collection = db.collection('favs');
         collection.remove(
           {name: favToDelete},
-          {justOne: true};
+          {justOne: true});
         collection.find().toArray(function(err, docs){
           onQueryFinished(docs);
         });
