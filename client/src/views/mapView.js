@@ -114,16 +114,17 @@ MapView.prototype = {
         p1.innerText = fav.name;
         p2.innerText = fav.info;
         deleteButton.innerText = "Delete";
-        deleteButton.id = fav._id;
+        deleteButton.id = fav.id;
         favBox.appendChild(p1);
         favBox.appendChild(p2);
         favBox.appendChild(deleteButton);
         favsContainer.appendChild(favBox);
 
-        var deleteButton = document.getElementById(fav._id);
+        var deleteButton = document.getElementById(fav.id);
  
         deleteButton.addEventListener('click', function(){
-        mapView.updateItem(fav._id);
+          console.log ("delete button id: ", fav.id);
+        mapView.updateItem(fav.id);
         });
       }
     };
