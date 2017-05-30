@@ -24,7 +24,7 @@ favRouter.post('/', function(req, res){
   })
 })
 
-favRouter.update('/:id', function(req, res) {
+favRouter.put('/:id', function(req, res) {
   query.update(req.params.id, function(){
     console.log("deleting");
   });
