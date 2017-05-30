@@ -120,13 +120,13 @@ MapView.prototype = {
         favBox.appendChild(deleteButton);
         favsContainer.appendChild(favBox);
 
-        var deleteButton = document.getElementById(fav.name);
- +
- +      deleteButton.addEventListener('click', function(){
- +        mapView.updateItem(fav._id);
- +      });
-      };
-    }
+        var deleteButton = document.getElementById(fav._id);
+
+        deleteButton.addEventListener('click', function(){
+        mapView.updateItem(fav._id);
+        });
+      }
+    };
   },
 
   // addToFavourites: function(place){
