@@ -25,9 +25,15 @@ favRouter.post('/', function(req, res){
   })
 })
 
-favRouter.delete('/:id', function(req, res) {
-  query.delete(req, function(results){
-    res.json(results);
+favRouter.put('/:id', function(req, res) {
+  query.update(req.params.id, function(){
+    console.log("deleting");
+  });
+})
+
+favRouter.get('/:id', function(req, res) {
+  query.single(req.params.id, function(data){
+    res.json(data);
   })
 })
 

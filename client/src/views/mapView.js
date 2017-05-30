@@ -77,7 +77,6 @@ MapView.prototype = {
       var p = document.createElement('p');
       p.innerText = place.name;
       mapContainer.appendChild(p);
-      console.log(place)
       var marker = new google.maps.Marker({
         name: place.name,
         info: place.info,
@@ -121,6 +120,9 @@ MapView.prototype = {
   },
 
   renderFavs: function(places){
+  
+    var mapView = this;
+
     var favsContainer = document.getElementById("fav-container");
 
     favsContainer.innerHTML = "";
@@ -152,6 +154,15 @@ MapView.prototype = {
   //   };
   //   favItems.post(callback, place);
   // }
+  
+
+  updateItem: function(deleteID){
+    var mapItems = new MapItems();
+    var callback = function(place){
+      console.log("callback");
+    };
+    MapItems.delete(deleteID, callback);
+  }
 }
 
 module.exports = MapView;

@@ -12,4 +12,10 @@ mapRouter.get('/', function(req, res){
   })
 })
 
+mapRouter.put('/:id', function(req, res) {
+  query.update(req.params.id, function(){
+    console.log("deleting");
+  });
+})
+
 module.exports = mapRouter;

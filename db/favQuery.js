@@ -17,6 +17,18 @@ FavQuery.prototype = {
     });
   },
 
+  single:function(id, onQueryFinished){
+    MongoClient.connect(this.url, function(err, db){
+      if(db){
+        var collection = db.collection('favs');
+        collection.find({_id: id}).toArray(function(err, docs){
+          onQueryFinished(docs);
+        });
+      }
+    });
+  },
+
+
   add:function(favToAdd, onQueryFinished){
     MongoClient.connect(this.url, function(err, db){
       if(db){
@@ -29,13 +41,11 @@ FavQuery.prototype = {
     });
   },
 
-  delete:function(favToDelete, onQueryFinished){
+  update:function(id, onQueryFinished){
     MongoClient.connect(this.url, function(err, db){
       if(db){
         var collection = db.collection('favs');
-        collection.remove(
-          {name: favToDelete},
-          {justOne: true});
+        collection.update({"_id": id},{"favourited":true});
         collection.find().toArray(function(err, docs){
           onQueryFinished(docs);
         });
