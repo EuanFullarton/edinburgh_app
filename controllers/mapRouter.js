@@ -13,8 +13,9 @@ mapRouter.get('/', function(req, res){
 })
 
 mapRouter.put('/:id', function(req, res) {
-  query.update(req.params.id, function(){
-    console.log("deleting");
+  query.update(req.params.id, function(data){
+    console.log("updating");
+    res.json(data);
   });
 })
 
