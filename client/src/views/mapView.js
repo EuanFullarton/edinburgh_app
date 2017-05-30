@@ -69,7 +69,6 @@ MapView.prototype = {
       var p = document.createElement('p');
       p.innerText = place.name;
       mapContainer.appendChild(p);
-      console.log(place)
       var marker = new google.maps.Marker({
         name: place.name,
         info: place.info,
@@ -109,6 +108,7 @@ MapView.prototype = {
   },
 
   renderFavs: function(favs){
+    var mapView = this;
     var favsContainer = document.getElementById("fav-container");
 
     favsContainer.innerHTML = "";
@@ -120,13 +120,18 @@ MapView.prototype = {
       var deleteButton = document.createElement('BUTTON');
       p1.innerText = fav.name;
       p2.innerText = fav.info;
-      deleteButton.name = "Delete";
-      deleteButton.value = "Delete";
+      deleteButton.innerText = "Delete";
+      deleteButton.id = fav.name;
       favBox.appendChild(p1);
       favBox.appendChild(p2);
       favBox.appendChild(deleteButton);
       favsContainer.appendChild(favBox);
 
+      var deleteButton = document.getElementById(fav.name);
+
+      deleteButton.addEventListener('click', function(){
+        mapView.deleteItem(fav._id);
+      });
     };
   },
 
@@ -136,6 +141,14 @@ MapView.prototype = {
       console.log("callback");
     };
     favItems.post(callback, place);
+  },
+
+  deleteItem: function(deleteID){
+    var favItems = new FavItems();
+    var callback = function(place){
+      console.log("callback");
+    };
+    // favItems.delete(deleteID, callback);
   }
 }
 

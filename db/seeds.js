@@ -2,9 +2,9 @@ use Edinburgh;
 
 db.dropDatabase();
 
-db.favs.insert([
-  {name:"Edinburgh Castle", info:"Edinburgh Castle is a historic fortress which dominates the skyline of the city of Edinburgh, Scotland, from its position on the Castle Rock", latlng: {lat: 55.9485947, lng:-3.1999135}, image: "/images/castlesmall.jpg"}
-])
+// db.favs.insert([
+//   {name:"Edinburgh Castle", info:"Edinburgh Castle is a historic fortress which dominates the skyline of the city of Edinburgh, Scotland, from its position on the Castle Rock", latlng: {lat: 55.9485947, lng:-3.1999135}, image: "/images/castlesmall.jpg"}
+// ])
 
 db.places.insert([
   {name:"Edinburgh Castle", info:"Edinburgh Castle is a historic fortress which dominates the skyline of the city of Edinburgh, Scotland, from its position on the Castle Rock", latlng: {lat: 55.9485947, lng:-3.1999135}, image: "/images/castlesmall.jpg"},
