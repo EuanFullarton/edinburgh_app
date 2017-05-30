@@ -93,7 +93,7 @@ MapView.prototype = {
 
         infowindow.setContent('<img src="' + this.image +'" width = 130 height = 90 />'+ " "+ this.name + ": " + this.info + "<button onclick= 'click' > Add to favourites</button>");
 
-        infowindow.setContent(this.name + ": </br></br>" + this.info + "</br></br>" +"<button id='fav-button' onclick= 'click' > Add to favourites</button>");
+        // infowindow.setContent(this.name + ": </br></br>" + this.info + "</br></br>" +"<button id='fav-button' onclick= 'click' > Add to favourites</button>");
 
         var thisItemName = this.name;
         var thisItemInfo = this.info;
