@@ -301,6 +301,7 @@ MapView.prototype = {
       });
       google.maps.event.addListener(marker, 'click', function () {
         infowindow.setContent('<img src="' + this.image +'" width = 130 height = 90 />'+ "</br> "+ this.name + ": " + "</br></br>" + this.info + "</br></br>" + "<button onclick= 'click' id= 'fav-button' > Add to favourites</button>");
+
         infowindow.open(googleMap, this);
         var favouritesButton = document.getElementById('fav-button');
         var id = this.id;
