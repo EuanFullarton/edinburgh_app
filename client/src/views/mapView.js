@@ -90,7 +90,7 @@ MapView.prototype = {
       google.maps.event.addListener(marker, 'click', function () {
                 
         setTimeout(function(){
-          infowindow.setContent('<img src="' + this.image +'" width = 130 height = 90 />'+ "</br> "+ this.name + ": " + "</br></br>" + this.info + "</br></br>" + "<button onclick= 'click' id= 'fav-button' > Add to favourites</button>");
+          infowindow.setContent('<img src="' + this.image +'" width = 130 height = 90 />'+ "</br> "+ this.name + ": " + "</br></br>" + this.info + "</br></br>" + "<button onclick= 'click' id= 'fav-button' class='fav-buttons' > Add to favourites</button>");
           var id = this.id;
           infowindow.open(googleMap, this)
 
@@ -123,7 +123,7 @@ MapView.prototype = {
         var deleteButton = document.createElement('BUTTON');
         p1.innerText = fav.name;
         p2.innerText = fav.info;
-        deleteButton.innerText = "Delete";
+        deleteButton.innerHTML = "Delete";
         deleteButton.id = fav.id;
         favBox.appendChild(p1);
         favBox.appendChild(p2);
