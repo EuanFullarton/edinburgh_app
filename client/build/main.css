@@ -81,6 +81,10 @@ body{
   margin-bottom:2%;
 }
 
+.gm-style .gm-style-iw {
+  font-family: 'Fondamento', cursive;
+}
+
 #fav-container{
   display: none;
   height:30em;
