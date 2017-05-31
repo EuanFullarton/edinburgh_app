@@ -21,10 +21,11 @@ MapItems.prototype = {
     return items;
   },
 
-  update: function(id, callback){
+  update: function(id, callback, result){
     var url = 'http://localhost:3000/api/map'+"/"+id;
-    console.log(url);
-    this.requestHelper.makeUpdateRequest(url, callback);
+    var initPayload = {"favourited": result};
+    var payload = JSON.stringify(initPayload);
+    this.requestHelper.makeUpdateRequest(url, callback, payload);
   }
 };
 

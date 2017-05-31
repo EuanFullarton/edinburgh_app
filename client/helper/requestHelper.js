@@ -29,18 +29,17 @@ Helper.prototype = {
     request.send(payload);
   },
 
-  makeUpdateRequest: function(url, callback){
+  makeUpdateRequest: function(url, callback, payload){
     var request = new XMLHttpRequest();
     request.open("PUT", url);
+    request.setRequestHeader('Content-Type', 'application/json');
     request.addEventListener("load", function(){
-      console.log("successful request");
       if(request.status !== 200) return;
       var jsonString = request.responseText;
       var resultsObject = JSON.parse(jsonString);
       callback(resultsObject)
     });
-    console.log("making request");
-    request.send();
+    request.send(payload);
   }
 }
 

@@ -18,15 +18,13 @@ MapQuery.prototype = {
     });
   },
 
-  update:function(id, onQueryFinished){
+  update:function(id, result, onQueryFinished){
     var id = new ObjectID(id);
     console.log(id)
     MongoClient.connect(this.url, function(err, db){
       if(db){
         var collection = db.collection('places');
-        // var newId = '"'+id+'"'
-        collection.update({_id: id}, {$set: {"favourited": false }});
-        // console.log(newId);
+        collection.update({_id: id}, {$set: result });
         collection.find({_id: id}).toArray(function(err, docs){
           onQueryFinished(docs);
         });

@@ -72,6 +72,7 @@ MapView.prototype = {
         favourited: place.favourited,
         image: place.image,
         latlng: place.latlng,
+        id: place.id,
         position: { lat: place.latlng.lat, lng: place.latlng.lng },
         animation: google.maps.Animation.DROP,
         map: googleMap
@@ -82,18 +83,12 @@ MapView.prototype = {
       });
       google.maps.event.addListener(marker, 'click', function () {
         infowindow.setContent('<img src="' + this.image +'" width = 130 height = 90 />'+ "</br> "+ this.name + ": " + "</br></br>" + this.info + "</br></br>" + "<button onclick= 'click' id= 'fav-button' > Add to favourites</button>");
-        var thisItemName = this.name;
-        var thisItemInfo = this.info;
-        var thisFavourited = this.favourited;
-        var thisItemLatLng = this.latlng;
-        var favPlace = new MapItem({name: thisItemName, info: thisItemInfo, latlng: thisItemLatLng, favourited: thisFavourited});
         infowindow.open(googleMap, this);
         var favouritesButton = document.getElementById('fav-button');
+        var id = this.id;
         favouritesButton.addEventListener('click', function(){
-            if (!thisFavourited){
-              console.log(this)
-              thisFavourited = true;
-          }
+          console.log(id);
+          mapView.updateItemTrue(id);
         });
       });
     }
@@ -123,7 +118,7 @@ MapView.prototype = {
         var deleteButton = document.getElementById(fav.id);
 
         deleteButton.addEventListener('click', function(){
-          mapView.updateItem(this.id);
+          mapView.updateItemFalse(this.id);
         });
       }
     };
@@ -137,12 +132,26 @@ MapView.prototype = {
   //   favItems.post(callback, place);
   // }
 
-  updateItem: function(deleteID){
+  updateItemTrue: function(deleteID){
     var mapItems = new MapItems();
     var callback = function(result){
-      console.log(result);
-    };
-    mapItems.update(deleteID, callback);
+      mapItems.all(function(places){
+        console.log(this);
+        this.renderFavs(places);
+      }.bind(this));
+    }.bind(this);
+    mapItems.update(deleteID, callback, true);
+  },
+
+  updateItemFalse: function(deleteID){
+    var mapItems = new MapItems();
+    var callback = function(result){
+      mapItems.all(function(places){
+        console.log(this);
+        this.renderFavs(places);
+      }.bind(this));
+    }.bind(this);
+    mapItems.update(deleteID, callback, false);
   }
 }
 module.exports = MapView;
