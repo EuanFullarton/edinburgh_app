@@ -30,7 +30,7 @@ MapView.prototype = {
     var navMapButton = document.getElementById("nav-map-button");
     navMapButton.style.display = "none";
     var menuButton = document.getElementById("menu-button");
-    menuButton.style.display = "block";
+    menuButton.style.display = "inline-block";
     var navButtons = document.getElementsByClassName("nav-button");
     var mainButtons = document.getElementsByClassName("main-button");
 
