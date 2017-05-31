@@ -78,18 +78,25 @@ MapView.prototype = {
       });
       var infowindow = new google.maps.InfoWindow({
         content: place.name + ": " + place.info,
-        maxWidth: 300
+        maxWidth: 400
       });
+
       google.maps.event.addListener(marker, 'click', function () {
+        
         infowindow.setContent('<img src="' + this.image +'" width = 130 height = 90 />'+ "</br> "+ this.name + ": " + "</br></br>" + this.info + "</br></br>" + "<button onclick= 'click' id= 'fav-button' > Add to favourites</button>");
         var thisItemName = this.name;
         var thisItemInfo = this.info;
         var thisFavourited = this.favourited;
         var thisItemLatLng = this.latlng;
         var favPlace = new MapItem({name: thisItemName, info: thisItemInfo, latlng: thisItemLatLng, favourited: thisFavourited});
-        infowindow.open(googleMap, this);
+        googleMap.panTo({lat: thisItemLatLng.lat, lng: thisItemLatLng.lng})
+
+        setTimeout(function(){
+          infowindow.open(googleMap, this)}.bind(this), 5);
+
         var favouritesButton = document.getElementById('fav-button');
         favouritesButton.addEventListener('click', function(){
+
             if (!thisFavourited){
               console.log(this)
               thisFavourited = true;
