@@ -4,7 +4,7 @@ body{
   background-size: 100%;
   background-repeat: no-repeat;
   margin:auto;
-  font-family: 'Fjalla One', sans-serif;
+  font-family: 'Fondamento', cursive;
 }
 
 .main-header{
@@ -14,7 +14,7 @@ body{
   color: white;
   font-size: 3em;
   font-weight: bolder;
-  -webkit-text-stroke: 0.75px black;
+  -webkit-text-stroke: 0.5px black;
 }
 
 #info-section{
@@ -23,8 +23,8 @@ body{
   text-align: center;
   width:50%;
   color:white;
-  font-size:1.75em;
-  -webkit-text-stroke: .5px black;
+  font-size:2em;
+  -webkit-text-stroke: .1px black;
 }
 
 .history-container {
@@ -36,13 +36,13 @@ body{
   overflow-x: scroll;
   overflow-y: hidden;
   width: 100%;
-  height: 35em;
+  height: 32em;
   margin-bottom:5%;
 }
 
 .history-container {
-  width: 635%;
-  height: 95%;
+  width: 790%;
+  height: 80%;
   background-image: url("./images/parchment-background.jpg");
   background-size: 100%;
   padding:3%;
@@ -51,23 +51,25 @@ body{
 
 .history-container div {
   float:left;
-  width: 200px;
-  height: 400px;
+  width: 250px;
   margin-right: 20px;
+  font-size: 1em;
 }
 
 .history-title {
   display: none;
   color: white;
   margin-left: 2%;
-  -webkit-text-stroke: 0.75px black;
+  font-size: 2.25em;
+  -webkit-text-stroke: 0.1px black;
 }
 
 .map-title {
   display: none;
   color: white;
   margin-left: 2%;
-  -webkit-text-stroke: 0.75px black;
+  font-size: 2.25em;
+  -webkit-text-stroke: 0.1px black;
 }
 
 #map-container{
@@ -86,8 +88,8 @@ body{
   margin-right: 2%;
   margin-bottom: 2%;
   overflow: scroll;
-  background-color: rgb(255, 255, 255);
-  background-color: rgba(255, 255, 255, 0.6);
+  background-image: url("./images/parchment-background.jpg");
+
 }
 
 #menu-button{
@@ -102,8 +104,8 @@ body{
 }
 
 .main-button{
-  background-color: #ff3333;
-  color:white;
+  background-image: url("./images/parchment-background.jpg");
+  color:black;
   display: inline-block;
   margin-left:25%;
   margin-right:-10%;
@@ -112,19 +114,21 @@ body{
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   width:15%;
   height:15%;
-  font-size: 2em;
+  font-size: 1.5em;
+  font-family: 'Fondamento', cursive;
 }
 
 .nav-button{
-  background-color: #ff3333;
-  color:white;
+  background-image: url("./images/parchment-background.jpg");
+  color:black;
   display: inline-block;
   margin: 2%;
   border-radius: 20px;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   width:10%;
   height:10%;
-  font-size: 1em;
+  font-size: 1.5em;
+  font-family: 'Fondamento', cursive;
 }
 
 #nav-map-button{
