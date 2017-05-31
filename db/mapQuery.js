@@ -1,4 +1,5 @@
 var MongoClient = require('mongodb').MongoClient;
+var ObjectID = require('mongodb').ObjectID;
 
 var MapQuery = function(){
   this.url = 'mongodb://localhost:27017/Edinburgh'
@@ -18,11 +19,15 @@ MapQuery.prototype = {
   },
 
   update:function(id, onQueryFinished){
+    var id = new ObjectID(id);
+    console.log(id)
     MongoClient.connect(this.url, function(err, db){
       if(db){
-        var collection = db.collection('favs');
-        collection.update({"_id": id},{"favourited": false});
-        collection.find({"_id": id}).toArray(function(err, docs){
+        var collection = db.collection('places');
+        // var newId = '"'+id+'"'
+        collection.update({_id: id}, {$set: {"favourited": false }});
+        // console.log(newId);
+        collection.find({_id: id}).toArray(function(err, docs){
           onQueryFinished(docs);
         });
       }
