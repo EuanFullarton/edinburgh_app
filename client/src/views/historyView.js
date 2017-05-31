@@ -44,7 +44,7 @@ HistoryView.prototype = {
     var navMapButton = document.getElementById("nav-map-button");
     navMapButton.style.display = "inline-block";
     var menuButton = document.getElementById("menu-button");
-    menuButton.style.display = "block";
+    menuButton.style.display = "inline-block";
 
     var navButtons = document.getElementsByClassName("nav-button");
     var mainButtons = document.getElementsByClassName("main-button")
