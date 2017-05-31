@@ -2,21 +2,17 @@ use Edinburgh;
 
 db.dropDatabase();
 
-db.favs.insert([
-  {name:"Edinburgh Castle", info:"Edinburgh Castle is a historic fortress which dominates the skyline of the city of Edinburgh, Scotland, from its position on the Castle Rock", latlng: {lat: 55.9485947, lng:-3.1999135}}
-])
-
 db.places.insert([
-  {name:"Edinburgh Castle", info:"Edinburgh Castle is a historic fortress which dominates the skyline of the city of Edinburgh, Scotland, from its position on the Castle Rock", latlng: {lat: 55.9485947, lng:-3.1999135}},
-  {name:"Arthur's Seat", info:"Arthur's Seat is the main peak of the group of hills in Edinburgh, Scotland which form most of Holyrood Park", latlng: {lat: 55.9440833, lng:-3.164022}},
-  {name:"CodeClan Edinburgh", info: "CodeClan is Scotland's first digital skills academy, with campuses in Edinburgh and Glasgow", latlng: {lat: 55.9469623, lng:-3.2019583}},
-  {name:"Scott Monument", info:"The Scott Monument is a Victorian Gothic monument to Scottish author Sir Walter Scott. It is the largest monument to a writer in the world", latlng: {lat: 55.952381, lng:-3.1932741}},
-  {name:"Canongate Kirk", info:"In 1688 King James VII of Scotland (also King James II of England) ordered the construction of the Kirk of the Canongate and it was completed in 1691. Burial place of Adam Smith", latlng: {lat: 55.9518274, lng:-3.1817981}},
-  {name:"St. Mary's Cathedral", info:"The neo-Gothic St. Mary's Cathedral is a striking building set in large grounds. Designed by George Gilbert Scott, it was consecrated in 1879. St. Mary's is the largest ecclesiastical building to be built in Scotland since the Reformation", latlng: {lat: 55.9485238, lng:-3.2251928}},
-  {name:"Palace of Hollyrood", info:"Built in 1128 and served as the main residence for the Kings and Queens of Scotland from the 15th century onwards. It is in fact still the Queen's official residence when she visits Edinburgh", latlng: {lat: 55.952715, lng:-3.1744591}},
-  {name:"St. Gile's Cathedral", info:"There has been a church on the site of this cathedral since the 9th century. St. Giles' Cathedral was built in 1120, and it has served an important role in Scottish religion as the Mother Church of Presbyterianism", latlng: {lat: 55.952381, lng:-3.1932741}},
-  {name:"Greyfriars Kirkyard", info:"Greyfriars Kirk is a beautiful sixteenth century church located in the heart of Edinburgh's Old Town. It is surrounded by a churchyard in which over 80,000 people have been interred since it was dedicated in 1561", latlng: {lat: 55.9466076, lng:-3.1944566}},
-  {name:"Scott Monument", info:"The Scott Monument is a Victorian Gothic monument to Scottish author Sir Walter Scott. It is the largest monument to a writer in the world", latlng: {lat: 55.952381, lng:-3.1932741}}
+  {name:"Edinburgh Castle", info:"Edinburgh Castle is a historic fortress which dominates the skyline of the city of Edinburgh, Scotland, from its position on the Castle Rock", latlng: {lat: 55.9485947, lng:-3.1999135}, image: "/images/castlesmall.jpg", favourited: true},
+  {name:"Arthur's Seat", info:"Arthur's Seat is the main peak of the group of hills in Edinburgh, Scotland which form most of Holyrood Park", latlng: {lat: 55.9440833, lng:-3.164022}, image: "/images/Arthursseat.jpg", favourited: false},
+  {name:"CodeClan Edinburgh", info: "CodeClan is Scotland's first digital skills academy, with campuses in Edinburgh and Glasgow", latlng: {lat: 55.9469623, lng:-3.2019583}, image: "/images/CodeClan.png", favourited: false},
+  {name:"Scott Monument", info:"The Scott Monument is a Victorian Gothic monument to Scottish author Sir Walter Scott. It is the largest monument to a writer in the world", latlng: {lat: 55.952381, lng:-3.1932741},image: "/images/scottmonument.jpeg", favourited: false},
+  {name:"Canongate Kirk", info:"In 1688 King James VII of Scotland (also King James II of England) ordered the construction of the Kirk of the Canongate and it was completed in 1691. Burial place of Adam Smith", latlng: {lat: 55.9518274, lng:-3.1817981},image: "/images/canongatekirk.jpg", favourited: false},
+  {name:"St. Mary's Cathedral", info:"The neo-Gothic St. Mary's Cathedral is a striking building set in large grounds. Designed by George Gilbert Scott, it was consecrated in 1879. St. Mary's is the largest ecclesiastical building to be built in Scotland since the Reformation", latlng: {lat: 55.9485238, lng:-3.2251928},image: "/images/maryscathedral.jpeg", favourited: false},
+  {name:"Palace of Hollyrood", info:"Built in 1128 and served as the main residence for the Kings and Queens of Scotland from the 15th century onwards. It is in fact still the Queen's official residence when she visits Edinburgh", latlng: {lat: 55.952715, lng:-3.1744591},image: "/images/holyroodplace.jpg", favourited: false},
+  {name:"St. Gile's Cathedral", info:"There has been a church on the site of this cathedral since the 9th century. St. Giles' Cathedral was built in 1120, and it has served an important role in Scottish religion as the Mother Church of Presbyterianism", latlng: {lat: 55.952381, lng:-3.1932741},image: "/images/StGiles.jpg", favourited: false},
+  {name:"Greyfriars Kirkyard", info:"Greyfriars Kirk is a beautiful sixteenth century church located in the heart of Edinburgh's Old Town. It is surrounded by a churchyard in which over 80,000 people have been interred since it was dedicated in 1561", latlng: {lat: 55.9466076, lng:-3.1944566},image: "/images/GreyfriarsKirkyard.jpg", favourited: false},
+  {name:"Scott Monument", info:"The Scott Monument is a Victorian Gothic monument to Scottish author Sir Walter Scott. It is the largest monument to a writer in the world", latlng: {lat: 55.952381, lng:-3.1932741},image: "/images/scottmonument.jpeg", favourited: false}
 ])
 
 db.history.insert([

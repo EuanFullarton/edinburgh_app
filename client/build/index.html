@@ -3,17 +3,20 @@
 <head>
   <title>Edinburgh</title>
   <script src="bundle.js"></script>
-  <link rel="stylesheet" type="text/css" href="main.css"></link>
   <script src="https://maps.googleapis.com/maps/api/js"></script>
+  <link rel="stylesheet" type="text/css" href="main.css"></link>
+  <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Fondamento" rel="stylesheet">
 </head>
 <body>
-  <h1 id="main-header">Main Page</h1>
-  <div id ="container">
-    <button id="main-map-button" class="button">Map</button>
-    <button id="nav-map-button" class="button">Map</button>
-    <button id="main-history-button" class="button">History</button>
-    <button id="nav-history-button" class="button">History</button>
-    <button id="menu-button" class="button" display="none">Menu</button>
+  <h1 class="main-header" id="main-header">EDINBURGH</h1>
+  <p id="info-section">Select 'map' to view notable landmarks, or choose 'history' to learn more about how the city has changed over time.</p>
+  <div class ="menu-container">
+    <button id="menu-button" class="nav-button" display="none">Menu</button>
+    <button id="main-map-button" class="main-button">Map</button>
+    <button id="nav-map-button" class="nav-button">Map</button>
+    <button id="main-history-button" class="main-button">History</button>
+    <button id="nav-history-button" class="nav-button">History</button>
   </div>
   <h1 class = "history-title" id="history-title">History View</h1>
   <div class = "outer-history-container" id ="outer-history-container">
@@ -21,9 +24,11 @@
     </div>
   </div>
   <h1 class = "map-title" id = "map-title">Map View</h1>
-  <div id ="map-container" class = "container">
-  </div>
-  <div id ="fav-container" class = "container">
+  <div class = "map-fav">
+    <div id ="map-container" class = "container">
+    </div>
+    <div id ="fav-container" class = "container">
+    </div>
   </div>
 </body>
 </html>

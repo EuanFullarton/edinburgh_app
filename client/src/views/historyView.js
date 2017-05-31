@@ -27,6 +27,12 @@ HistoryView.prototype = {
     mapHeader.style.display = "none";
     var historyHeader = document.getElementById("history-title");
     historyHeader.style.display = "block";
+    var infoSection = document.getElementById("info-section");
+    infoSection.innerText = "Scroll along the timeline to read about Edinburgh's history.";
+    infoSection.style.fontSize = "0.75em";
+    infoSection.style.width = "100%";
+    infoSection.style.textAlign = "left";
+    historyHeader.appendChild(infoSection)
     
 
     var mainHistoryButton = document.getElementById("main-history-button");
@@ -39,6 +45,18 @@ HistoryView.prototype = {
     navMapButton.style.display = "inline-block";
     var menuButton = document.getElementById("menu-button");
     menuButton.style.display = "block";
+
+    var navButtons = document.getElementsByClassName("nav-button");
+    var mainButtons = document.getElementsByClassName("main-button")
+    console.log(navButtons);
+    for (button of navButtons){
+      button.style.margin = "0";
+      button.style.padding = "1%";
+    };
+
+    for (button of mainButtons){
+      button.style.display = "none";
+    }
 
     var historyContainer = document.getElementById("history-container");
     outerhistoryContainer.style.display = "block";
