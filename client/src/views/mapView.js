@@ -88,7 +88,6 @@ MapView.prototype = {
       });
 
       google.maps.event.addListener(marker, 'click', function () {
-                
         setTimeout(function(){
           infowindow.setContent('<img src="' + this.image +'" width = 130 height = 90 />'+ "</br> "+ this.name + ": " + "</br></br>" + this.info + "</br></br>" + "<button onclick= 'click' id= 'fav-button' class='fav-buttons' > Add to favourites</button>");
           var id = this.id;
