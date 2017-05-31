@@ -66,11 +66,14 @@ HistoryView.prototype = {
       var d = document.createElement('div');
       var year = document.createElement('p');
       var text = document.createElement('p');
+      var image = document.createElement('p');
       console.log(history.year);
       year.innerText = history.year;
       text.innerText = history.fact;
+      image.innerHTML = '<img src="'+ history.image+'" height = 150 width = 200/>'
       d.appendChild(year);
       d.appendChild(text);
+      d.appendChild(image);
       historyContainer.appendChild(d);
     }
   }
