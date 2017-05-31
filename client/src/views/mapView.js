@@ -1,5 +1,6 @@
 var MapItems = require('../models/mapItems');
 var MapItem = require('../models/mapItem');
+var GoogleMapStyles = require('./googleMapStyles')
 
 var MapView = function() {
 
@@ -62,221 +63,7 @@ MapView.prototype = {
     var googleMap = new google.maps.Map(mapContainer, {
       center: {lat: 55.953251, lng: -3.188267},
       zoom: 13,
-      styles: [
-      {
-        "elementType": "geometry",
-        "stylers": [
-          {
-            "color": "#ebe3cd"
-          }
-        ]
-      },
-      {
-        "elementType": "labels.text.fill",
-        "stylers": [
-          {
-            "color": "#523735"
-          }
-        ]
-      },
-      {
-        "elementType": "labels.text.stroke",
-        "stylers": [
-          {
-            "color": "#f5f1e6"
-          }
-        ]
-      },
-      {
-        "featureType": "administrative",
-        "elementType": "geometry.stroke",
-        "stylers": [
-          {
-            "color": "#c9b2a6"
-          }
-        ]
-      },
-      {
-        "featureType": "administrative.land_parcel",
-        "elementType": "geometry.stroke",
-        "stylers": [
-          {
-            "color": "#dcd2be"
-          }
-        ]
-      },
-      {
-        "featureType": "administrative.land_parcel",
-        "elementType": "labels.text.fill",
-        "stylers": [
-          {
-            "color": "#ae9e90"
-          }
-        ]
-      },
-      {
-        "featureType": "landscape.natural",
-        "elementType": "geometry",
-        "stylers": [
-          {
-            "color": "#dfd2ae"
-          }
-        ]
-      },
-      {
-        "featureType": "poi",
-        "elementType": "geometry",
-        "stylers": [
-          {
-            "color": "#dfd2ae"
-          }
-        ]
-      },
-      {
-        "featureType": "poi",
-        "elementType": "labels.text.fill",
-        "stylers": [
-          {
-            "color": "#93817c"
-          }
-        ]
-      },
-      {
-        "featureType": "poi.park",
-        "elementType": "geometry.fill",
-        "stylers": [
-          {
-            "color": "#a5b076"
-          }
-        ]
-      },
-      {
-        "featureType": "poi.park",
-        "elementType": "labels.text.fill",
-        "stylers": [
-          {
-            "color": "#447530"
-          }
-        ]
-      },
-      {
-        "featureType": "road",
-        "elementType": "geometry",
-        "stylers": [
-          {
-            "color": "#f5f1e6"
-          }
-        ]
-      },
-      {
-        "featureType": "road.arterial",
-        "elementType": "geometry",
-        "stylers": [
-          {
-            "color": "#fdfcf8"
-          }
-        ]
-      },
-      {
-        "featureType": "road.highway",
-        "elementType": "geometry",
-        "stylers": [
-          {
-            "color": "#f8c967"
-          }
-        ]
-      },
-      {
-        "featureType": "road.highway",
-        "elementType": "geometry.stroke",
-        "stylers": [
-          {
-            "color": "#e9bc62"
-          }
-        ]
-      },
-      {
-        "featureType": "road.highway.controlled_access",
-        "elementType": "geometry",
-        "stylers": [
-          {
-            "color": "#e98d58"
-          }
-        ]
-      },
-      {
-        "featureType": "road.highway.controlled_access",
-        "elementType": "geometry.stroke",
-        "stylers": [
-          {
-            "color": "#db8555"
-          }
-        ]
-      },
-      {
-        "featureType": "road.local",
-        "elementType": "labels.text.fill",
-        "stylers": [
-          {
-            "color": "#806b63"
-          }
-        ]
-      },
-      {
-        "featureType": "transit.line",
-        "elementType": "geometry",
-        "stylers": [
-          {
-            "color": "#dfd2ae"
-          }
-        ]
-      },
-      {
-        "featureType": "transit.line",
-        "elementType": "labels.text.fill",
-        "stylers": [
-          {
-            "color": "#8f7d77"
-          }
-        ]
-      },
-      {
-        "featureType": "transit.line",
-        "elementType": "labels.text.stroke",
-        "stylers": [
-          {
-            "color": "#ebe3cd"
-          }
-        ]
-      },
-      {
-        "featureType": "transit.station",
-        "elementType": "geometry",
-        "stylers": [
-          {
-            "color": "#dfd2ae"
-          }
-        ]
-      },
-      {
-        "featureType": "water",
-        "elementType": "geometry.fill",
-        "stylers": [
-          {
-            "color": "#b9d3c2"
-          }
-        ]
-      },
-      {
-        "featureType": "water",
-        "elementType": "labels.text.fill",
-        "stylers": [
-          {
-            "color": "#92998d"
-          }
-        ]
-      }
-    ]
+      styles: GoogleMapStyles
     });
 
 
@@ -297,18 +84,26 @@ MapView.prototype = {
       });
       var infowindow = new google.maps.InfoWindow({
         content: place.name + ": " + place.info,
-        maxWidth: 300
+        maxWidth: 400
       });
-      google.maps.event.addListener(marker, 'click', function () {
-        infowindow.setContent('<img src="' + this.image +'" width = 130 height = 90 />'+ "</br> "+ this.name + ": " + "</br></br>" + this.info + "</br></br>" + "<button onclick= 'click' id= 'fav-button' > Add to favourites</button>");
 
-        infowindow.open(googleMap, this);
-        var favouritesButton = document.getElementById('fav-button');
-        var id = this.id;
-        favouritesButton.addEventListener('click', function(){
-          console.log(id);
-          mapView.updateItemTrue(id);
-        });
+      google.maps.event.addListener(marker, 'click', function () {
+        setTimeout(function(){
+          infowindow.setContent('<img src="' + this.image +'" width = 130 height = 90 />'+ "</br> "+ this.name + ": " + "</br></br>" + this.info + "</br></br>" + "<button onclick= 'click' id= 'fav-button' > Add to favourites</button>");
+          var id = this.id;
+          infowindow.open(googleMap, this)
+
+          var favouritesButton = document.getElementById('fav-button');
+          console.log(favouritesButton);
+          favouritesButton.addEventListener('click', function(){
+            console.log(id);
+            mapView.updateItemTrue(id);
+          });
+
+
+          googleMap.panTo({lat: this.latlng.lat, lng: this.latlng.lng})
+
+        }.bind(this), 5);
       });
     }
   },
@@ -317,7 +112,7 @@ MapView.prototype = {
 
     var mapView = this;
     var favsContainer = document.getElementById("fav-container");
-    favsContainer.innerHTML = "";
+    favsContainer.innerHTML = "<h3 id='fav-header'>Favourites</h3>";
     favsContainer.style.display = "block";
     for(var fav of places){
      if (fav.favourited){
