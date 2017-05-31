@@ -1,5 +1,6 @@
 var MapItems = require('../models/mapItems');
 var MapItem = require('../models/mapItem');
+var GoogleMapStyles = require('./googleMapStyles')
 
 var MapView = function() {
 
@@ -57,10 +58,14 @@ MapView.prototype = {
     var mapContainer = document.getElementById("map-container");
     mapContainer.innerHTML = "";
     mapContainer.style.display = "block";
+
+
     var googleMap = new google.maps.Map(mapContainer, {
       center: {lat: 55.953251, lng: -3.188267},
-      zoom: 13
+      zoom: 13,
+      styles: GoogleMapStyles
     });
+
 
     for(var place of places){
       var p = document.createElement('p');
@@ -72,6 +77,7 @@ MapView.prototype = {
         favourited: place.favourited,
         image: place.image,
         latlng: place.latlng,
+        id: place.id,
         position: { lat: place.latlng.lat, lng: place.latlng.lng },
         animation: google.maps.Animation.DROP,
         map: googleMap
@@ -82,26 +88,23 @@ MapView.prototype = {
       });
 
       google.maps.event.addListener(marker, 'click', function () {
-        
-        infowindow.setContent('<img src="' + this.image +'" width = 130 height = 90 />'+ "</br> "+ this.name + ": " + "</br></br>" + this.info + "</br></br>" + "<button onclick= 'click' id= 'fav-button' > Add to favourites</button>");
-        var thisItemName = this.name;
-        var thisItemInfo = this.info;
-        var thisFavourited = this.favourited;
-        var thisItemLatLng = this.latlng;
-        var favPlace = new MapItem({name: thisItemName, info: thisItemInfo, latlng: thisItemLatLng, favourited: thisFavourited});
-        googleMap.panTo({lat: thisItemLatLng.lat, lng: thisItemLatLng.lng})
-
+                
         setTimeout(function(){
-          infowindow.open(googleMap, this)}.bind(this), 5);
+          infowindow.setContent('<img src="' + this.image +'" width = 130 height = 90 />'+ "</br> "+ this.name + ": " + "</br></br>" + this.info + "</br></br>" + "<button onclick= 'click' id= 'fav-button' > Add to favourites</button>");
+          var id = this.id;
+          infowindow.open(googleMap, this)
 
-        var favouritesButton = document.getElementById('fav-button');
-        favouritesButton.addEventListener('click', function(){
+          var favouritesButton = document.getElementById('fav-button');
+          console.log(favouritesButton);
+          favouritesButton.addEventListener('click', function(){
+            console.log(id);
+            mapView.updateItemTrue(id);
+          });
 
-            if (!thisFavourited){
-              console.log(this)
-              thisFavourited = true;
-          }
-        });
+
+          googleMap.panTo({lat: this.latlng.lat, lng: this.latlng.lng})
+
+        }.bind(this), 5);
       });
     }
   },
@@ -130,7 +133,7 @@ MapView.prototype = {
         var deleteButton = document.getElementById(fav.id);
 
         deleteButton.addEventListener('click', function(){
-          mapView.updateItem(this.id);
+          mapView.updateItemFalse(this.id);
         });
       }
     };
@@ -144,12 +147,26 @@ MapView.prototype = {
   //   favItems.post(callback, place);
   // }
 
-  updateItem: function(deleteID){
+  updateItemTrue: function(deleteID){
     var mapItems = new MapItems();
     var callback = function(result){
-      console.log(result);
-    };
-    mapItems.update(deleteID, callback);
+      mapItems.all(function(places){
+        console.log(this);
+        this.renderFavs(places);
+      }.bind(this));
+    }.bind(this);
+    mapItems.update(deleteID, callback, true);
+  },
+
+  updateItemFalse: function(deleteID){
+    var mapItems = new MapItems();
+    var callback = function(result){
+      mapItems.all(function(places){
+        console.log(this);
+        this.renderFavs(places);
+      }.bind(this));
+    }.bind(this);
+    mapItems.update(deleteID, callback, false);
   }
 }
 module.exports = MapView;
