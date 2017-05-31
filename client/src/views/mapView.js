@@ -113,7 +113,7 @@ MapView.prototype = {
 
     var mapView = this;
     var favsContainer = document.getElementById("fav-container");
-    favsContainer.innerHTML = "";
+    favsContainer.innerHTML = "<h3 id='fav-header'>Favourites</h3>";
     favsContainer.style.display = "block";
     for(var fav of places){
      if (fav.favourited){
