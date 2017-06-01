@@ -19,6 +19,13 @@ MapItems.prototype = {
       return new MapItem(resultObject);
     })
     return items;
+  },
+
+  update: function(id, callback, result){
+    var url = 'http://localhost:3000/api/map'+"/"+id;
+    var initPayload = {"favourited": result};
+    var payload = JSON.stringify(initPayload);
+    this.requestHelper.makeUpdateRequest(url, callback, payload);
   }
 };
 
