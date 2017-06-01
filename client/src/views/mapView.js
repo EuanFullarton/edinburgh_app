@@ -62,7 +62,7 @@ MapView.prototype = {
 
     var googleMap = new google.maps.Map(mapContainer, {
       center: {lat: 55.953251, lng: -3.188267},
-      zoom: 13,
+      zoom: 12,
       styles: GoogleMapStyles
     });
 
